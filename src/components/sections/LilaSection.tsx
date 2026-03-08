@@ -34,9 +34,9 @@ export default function LilaSection() {
           </div>
         </div>
 
-        {/* Kamyavan — full-width immersive */}
+        {/* Kamyavan — full-width immersive with glassmorphism */}
         <div
-          className={`group relative rounded-xl overflow-hidden h-[450px] md:h-[550px] mb-8 transition-all duration-1000 ${
+          className={`group relative rounded-2xl overflow-hidden h-[450px] md:h-[550px] mb-8 transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "200ms" }}
@@ -47,27 +47,28 @@ export default function LilaSection() {
             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-background/30 to-transparent" />
           <div className="absolute inset-0 flex items-center">
-            <div className="max-w-xl p-8 md:p-14">
-              <h3 className="font-heading text-2xl md:text-4xl text-primary mb-4">Kāmyavan</h3>
-              <p className="font-body text-xl md:text-2xl text-foreground/80 leading-relaxed italic">
-                Wander through the mystical forests of Kāmyavan. Walk the very grounds where Krishna and Balarām played, herded cows, and enchanted the universe.
-              </p>
-              <p className="font-body text-foreground/50 mt-4 text-lg">
-                Every rustling leaf whispers a forgotten story. Every shaft of light through the canopy feels like darśan.
-              </p>
+            <div className="p-8 md:p-12 max-w-xl">
+              <div className="bg-background/30 backdrop-blur-xl border border-primary/15 rounded-xl p-6 md:p-8">
+                <h3 className="font-heading text-2xl md:text-3xl text-primary mb-4">Kāmyavan</h3>
+                <p className="font-body text-lg md:text-xl text-foreground/80 leading-relaxed italic">
+                  Wander through the mystical forests of Kāmyavan. Walk the very grounds where Krishna and Balarām played, herded cows, and enchanted the universe.
+                </p>
+                <p className="font-body text-foreground/50 mt-3 text-base">
+                  Every rustling leaf whispers a forgotten story. Every shaft of light through the canopy feels like darśan.
+                </p>
+              </div>
             </div>
           </div>
-          <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-xl transition-colors duration-500" />
         </div>
 
-        {/* Three sub-items */}
+        {/* Three sub-items with glassmorphism */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {subItems.map((item, i) => (
             <div
               key={item.title}
-              className={`group relative rounded-xl overflow-hidden h-[350px] transition-all duration-700 ${
+              className={`group relative rounded-2xl overflow-hidden h-[350px] transition-all duration-700 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: visible ? `${(i + 2) * 150}ms` : "0ms" }}
@@ -78,12 +79,13 @@ export default function LilaSection() {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/30 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="font-heading text-sm sm:text-base text-primary mb-2">{item.title}</h3>
-                <p className="font-body text-foreground/70 text-base leading-relaxed">{item.desc}</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-background/30 backdrop-blur-xl border border-primary/15 rounded-lg p-4">
+                  <h3 className="font-heading text-xs sm:text-sm text-primary mb-1">{item.title}</h3>
+                  <p className="font-body text-foreground/70 text-sm leading-relaxed">{item.desc}</p>
+                </div>
               </div>
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/20 rounded-xl transition-colors duration-500" />
             </div>
           ))}
         </div>

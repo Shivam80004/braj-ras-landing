@@ -44,7 +44,7 @@ export default function VCMSection() {
           {facilities.map((f, i) => (
             <div
               key={f.title}
-              className={`group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ${f.span} ${
+              className={`group relative rounded-2xl overflow-hidden cursor-pointer transition-all duration-700 ${f.span} ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: visible ? `${i * 100}ms` : "0ms" }}
@@ -55,14 +55,15 @@ export default function VCMSection() {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
-                <h3 className="font-heading text-sm sm:text-base text-primary mb-1">{f.title}</h3>
-                <p className="font-body text-foreground/70 text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">
-                  {f.desc}
-                </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3 md:bottom-4 md:left-4 md:right-4">
+                <div className="bg-background/30 backdrop-blur-xl border border-primary/15 rounded-lg p-3 md:p-4 group-hover:bg-background/40 transition-colors duration-500">
+                  <h3 className="font-heading text-xs sm:text-sm text-primary mb-1">{f.title}</h3>
+                  <p className="font-body text-foreground/70 text-xs md:text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 line-clamp-3">
+                    {f.desc}
+                  </p>
+                </div>
               </div>
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-primary/30 rounded-xl transition-colors duration-500" />
             </div>
           ))}
         </div>

@@ -54,7 +54,7 @@ export default function RegisterSection() {
         </div>
 
         <div
-          className={`gold-border rounded-lg p-8 md:p-10 bg-card/50 backdrop-blur-sm transition-all duration-1000 ${
+          className={`rounded-2xl p-8 md:p-10 bg-background/25 backdrop-blur-xl border border-primary/20 hover:border-primary/30 transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "200ms" }}

@@ -1,27 +1,33 @@
 import { Play } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import heroBg from "@/assets/hero-bg.jpg";
 
 export default function VideoSection() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="video" className="py-24 px-6">
+    <section id="video" className="py-24 px-6 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.02] bg-texture-move" />
+
       <div
         ref={ref}
         className={`container mx-auto max-w-4xl transition-all duration-1000 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
         }`}
       >
-        <div className="relative aspect-video rounded-lg gold-border overflow-hidden bg-muted/30 group cursor-pointer">
-          {/* Ornate corner accents */}
-          <div className="absolute top-0 left-0 w-12 h-12 border-t-2 border-l-2 border-primary/60 rounded-tl-lg" />
-          <div className="absolute top-0 right-0 w-12 h-12 border-t-2 border-r-2 border-primary/60 rounded-tr-lg" />
-          <div className="absolute bottom-0 left-0 w-12 h-12 border-b-2 border-l-2 border-primary/60 rounded-bl-lg" />
-          <div className="absolute bottom-0 right-0 w-12 h-12 border-b-2 border-r-2 border-primary/60 rounded-br-lg" />
+        <div className="relative aspect-video rounded-2xl overflow-hidden group cursor-pointer bg-background/30 backdrop-blur-xl border border-primary/20">
+          <img
+            src={heroBg}
+            alt="Video placeholder"
+            className="w-full h-full object-cover opacity-60 transition-transform duration-700 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-background/40" />
 
-          <div className="absolute inset-0 flex items-center justify-center bg-background/40">
-            <div className="w-20 h-20 rounded-full border-2 border-primary/60 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/10 transition-all duration-300">
-              <Play className="text-primary ml-1" size={32} />
+          {/* Glassmorphism play button */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-24 h-24 rounded-full bg-background/30 backdrop-blur-xl border border-primary/40 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/60 transition-all duration-500 group-hover:scale-110">
+              <Play className="text-primary ml-1" size={36} />
             </div>
           </div>
         </div>
