@@ -13,10 +13,9 @@ export default function PerksSection() {
 
   return (
     <section className="py-24 px-6 relative overflow-hidden">
-      {/* Background image with heavy overlay */}
       <div className="absolute inset-0">
         <img src={yamuna} alt="" className="w-full h-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-background/92" />
+        <div className="absolute inset-0 bg-background/88" />
       </div>
 
       <div ref={ref} className="container mx-auto max-w-5xl relative z-10">
@@ -37,12 +36,12 @@ export default function PerksSection() {
           {perks.map((p, i) => (
             <div
               key={p.title}
-              className={`text-center p-8 rounded-xl gold-border gold-border-hover bg-card/40 backdrop-blur-md transition-all duration-700 ${
+              className={`text-center p-8 rounded-2xl bg-background/25 backdrop-blur-xl border border-primary/15 hover:border-primary/30 hover:bg-background/35 transition-all duration-700 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
             >
-              <div className="w-16 h-16 mx-auto mb-5 rounded-full border border-primary/40 flex items-center justify-center bg-primary/5">
+              <div className="w-16 h-16 mx-auto mb-5 rounded-full bg-primary/10 backdrop-blur-md border border-primary/20 flex items-center justify-center">
                 <p.icon className="text-primary" size={28} />
               </div>
               <h3 className="font-heading text-sm sm:text-base text-primary mb-3">{p.title}</h3>

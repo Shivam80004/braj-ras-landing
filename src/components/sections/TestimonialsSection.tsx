@@ -10,8 +10,11 @@ export default function TestimonialsSection() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background via-maroon-deep/20 to-background">
-      <div ref={ref} className="container mx-auto max-w-5xl">
+    <section className="py-24 px-6 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-maroon-deep/20 to-background" />
+      <div className="absolute inset-0 opacity-[0.02] bg-texture-move" />
+
+      <div ref={ref} className="container mx-auto max-w-5xl relative z-10">
         <div className="text-center mb-16">
           <h2
             className={`font-heading text-3xl sm:text-4xl text-gold-gradient transition-all duration-1000 ${
@@ -29,16 +32,16 @@ export default function TestimonialsSection() {
           {testimonials.map((t, i) => (
             <div
               key={t.name}
-              className={`gold-border gold-border-hover rounded-lg p-8 bg-card/30 backdrop-blur-sm transition-all duration-700 ${
+              className={`rounded-2xl p-8 bg-background/25 backdrop-blur-xl border border-primary/15 hover:border-primary/30 hover:bg-background/35 transition-all duration-700 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
             >
-              <span className="text-primary/30 text-6xl font-heading leading-none block -mb-4">"</span>
+              <span className="text-primary/20 text-6xl font-heading leading-none block -mb-4">"</span>
               <p className="font-body text-foreground/80 text-lg italic leading-relaxed mb-6">
                 {t.quote}
               </p>
-              <div>
+              <div className="pt-4 border-t border-primary/10">
                 <p className="font-heading text-xs text-primary tracking-wider">{t.name}</p>
                 <p className="font-body text-muted-foreground text-sm">{t.location}</p>
               </div>
