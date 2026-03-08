@@ -1,21 +1,28 @@
 import { Music, MapPin, Sparkles } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import yamuna from "@/assets/yamuna.jpg";
 
 const perks = [
-  { icon: Music, title: "Soul-Stirring Kīrtans", desc: "Experience kīrtans that move the very core of your being." },
-  { icon: MapPin, title: "Discover Vraj", desc: "Guided journeys through the sacred land of Vraja." },
-  { icon: Sparkles, title: "Curated Experiences", desc: "Thoughtfully designed moments that connect you to the divine." },
+  { icon: Music, title: "Soul-Stirring Kīrtans", desc: "Experience kīrtans that move the very core of your being — ancient melodies that unlock the heart." },
+  { icon: MapPin, title: "Discover Vraj", desc: "Guided journeys through the sacred land, with storytelling that brings every stone and river alive." },
+  { icon: Sparkles, title: "Curated Experiences", desc: "Thoughtfully designed moments — from sunrise ārati to evening boat rides on the Yamunā." },
 ];
 
 export default function PerksSection() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="py-20 px-6">
-      <div ref={ref} className="container mx-auto max-w-5xl">
+    <section className="py-24 px-6 relative overflow-hidden">
+      {/* Background image with heavy overlay */}
+      <div className="absolute inset-0">
+        <img src={yamuna} alt="" className="w-full h-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 bg-background/92" />
+      </div>
+
+      <div ref={ref} className="container mx-auto max-w-5xl relative z-10">
         <div className="text-center mb-12">
           <h2
-            className={`font-heading text-2xl sm:text-3xl text-gold-gradient transition-all duration-1000 ${
+            className={`font-heading text-2xl sm:text-3xl md:text-4xl text-gold-gradient transition-all duration-1000 ${
               visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -26,11 +33,11 @@ export default function PerksSection() {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-stretch gap-8 justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {perks.map((p, i) => (
             <div
               key={p.title}
-              className={`flex-1 text-center p-8 transition-all duration-700 ${
+              className={`text-center p-8 rounded-xl gold-border gold-border-hover bg-card/40 backdrop-blur-md transition-all duration-700 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: visible ? `${i * 150}ms` : "0ms" }}
@@ -38,8 +45,8 @@ export default function PerksSection() {
               <div className="w-16 h-16 mx-auto mb-5 rounded-full border border-primary/40 flex items-center justify-center bg-primary/5">
                 <p.icon className="text-primary" size={28} />
               </div>
-              <h3 className="font-heading text-sm sm:text-base text-primary mb-2">{p.title}</h3>
-              <p className="font-body text-foreground/60 text-lg">{p.desc}</p>
+              <h3 className="font-heading text-sm sm:text-base text-primary mb-3">{p.title}</h3>
+              <p className="font-body text-foreground/60 text-lg leading-relaxed">{p.desc}</p>
             </div>
           ))}
         </div>

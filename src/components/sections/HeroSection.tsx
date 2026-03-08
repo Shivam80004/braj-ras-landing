@@ -1,11 +1,36 @@
 import { ChevronDown } from "lucide-react";
+import heroBg from "@/assets/hero-bg.jpg";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-royal-deep via-background to-maroon-deep opacity-80" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(43_72%_52%/0.06)_0%,transparent_70%)]" />
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroBg}
+          alt="Vrindavan temples at golden hour"
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(43_72%_52%/0.08)_0%,transparent_70%)]" />
+      </div>
+
+      {/* Animated floating particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(6)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-primary/30"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+              animation: `float-particle ${4 + i}s ease-in-out infinite alternate`,
+              animationDelay: `${i * 0.7}s`,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="relative z-10 text-center px-6">
         <h1 className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-9xl shimmer text-gold-gradient leading-tight tracking-wide">
