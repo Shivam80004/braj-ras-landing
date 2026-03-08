@@ -1,20 +1,20 @@
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import deity1 from "@/assets/deity-1.jpg";
-import deity2 from "@/assets/deity-2.jpg";
-import deity3 from "@/assets/deity-3.jpg";
-import deity4 from "@/assets/deity-4.jpg";
-import ghats from "@/assets/ghats.jpg";
-import kirtan from "@/assets/kirtan.jpg";
-import parikrama from "@/assets/parikrama.jpg";
+import bankeBihari from "@/assets/banke-bihari.jpg";
+import radhaRaman from "@/assets/radha-raman.jpg";
+import radhaDamodar from "@/assets/radha-damodar.jpg";
+import radhaGokulananda from "@/assets/radha-gokulananda.jpg";
+import radhaShyamsundar from "@/assets/radha-shyamsundar.jpg";
+import madanMohan from "@/assets/madan-mohan.jpg";
+import radhaGopinath from "@/assets/radha-gopinath.jpg";
 
 const deities = [
-  { name: "Śrī Bāṅke Bihārī", desc: "The playful Lord who steals hearts with His sideways glance.", image: deity1, span: "col-span-2 row-span-2" },
-  { name: "Śrī Rādhā Ramaṇ", desc: "Self-manifested, radiant and intimate.", image: deity2, span: "col-span-1 row-span-1" },
-  { name: "Śrī Rādhā Dāmodar", desc: "Worshiped by great ācāryas; the gateway to deeper Vraja bhāva.", image: deity3, span: "col-span-1 row-span-1" },
-  { name: "Śrī Rādhā Gokulananda", desc: "A hidden jewel of devotion.", image: deity4, span: "col-span-1 row-span-2" },
-  { name: "Śrī Rādhā Śyāmasundar", desc: "Divine beauty beyond poetry.", image: ghats, span: "col-span-1 row-span-1" },
-  { name: "Śrī Rādhā Madan Mohan", desc: "The original establisher of bhakti in Vṛndāvan.", image: kirtan, span: "col-span-1 row-span-1" },
-  { name: "Śrī Rādhā Gopīnāth", desc: "The enchanter of the gopīs.", image: parikrama, span: "col-span-2 row-span-1" },
+  { name: "Śrī Bāṅke Bihārī", desc: "The playful Lord who steals hearts with His sideways glance.", image: bankeBihari },
+  { name: "Śrī Rādhā Ramaṇ", desc: "Self-manifested, radiant and intimate.", image: radhaRaman },
+  { name: "Śrī Rādhā Dāmodar", desc: "Worshiped by great ācāryas; the gateway to deeper Vraja bhāva.", image: radhaDamodar },
+  { name: "Śrī Rādhā Gokulananda", desc: "A hidden jewel of devotion.", image: radhaGokulananda },
+  { name: "Śrī Rādhā Śyāmasundar", desc: "Divine beauty beyond poetry.", image: radhaShyamsundar },
+  { name: "Śrī Rādhā Madan Mohan", desc: "The original establisher of bhakti in Vṛndāvan.", image: madanMohan },
+  { name: "Śrī Rādhā Gopīnāth", desc: "The enchanter of the gopīs.", image: radhaGopinath },
 ];
 
 export default function DeitiesSection() {
@@ -22,7 +22,6 @@ export default function DeitiesSection() {
 
   return (
     <section id="deities" className="py-24 px-6 relative overflow-hidden">
-      {/* Animated texture background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-maroon-deep/30 to-background" />
       <div className="absolute inset-0 opacity-[0.03] bg-texture-move" />
 
@@ -43,15 +42,41 @@ export default function DeitiesSection() {
           </div>
         </div>
 
-        {/* Bento grid layout like the reference */}
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[220px] gap-3 md:gap-4">
-          {deities.map((d, i) => (
+        {/* Featured deity — large card */}
+        <div
+          className={`group relative rounded-2xl overflow-hidden h-[400px] md:h-[500px] mb-6 transition-all duration-1000 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+          }`}
+        >
+          <img
+            src={deities[0].image}
+            alt={deities[0].name}
+            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/30 to-transparent" />
+          {/* Glassmorphism card */}
+          <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-auto md:max-w-md">
+            <div className="bg-background/40 backdrop-blur-xl border border-primary/20 rounded-xl p-6 md:p-8">
+              <h3 className="font-heading text-lg md:text-2xl text-primary mb-2">
+                {deities[0].name}
+              </h3>
+              <p className="font-body text-foreground/80 text-base md:text-lg leading-relaxed">
+                {deities[0].desc}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* 3-column grid for next 3 deities */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
+          {deities.slice(1, 4).map((d, i) => (
             <div
               key={d.name}
-              className={`group relative rounded-xl overflow-hidden cursor-pointer transition-all duration-700 ${d.span} ${
+              className={`group relative rounded-2xl overflow-hidden h-[320px] sm:h-[380px] transition-all duration-700 ${
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
-              style={{ transitionDelay: visible ? `${i * 80}ms` : "0ms" }}
+              style={{ transitionDelay: visible ? `${(i + 1) * 120}ms` : "0ms" }}
             >
               <img
                 src={d.image}
@@ -59,19 +84,50 @@ export default function DeitiesSection() {
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 loading="lazy"
               />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-500" />
-              {/* Content overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-heading text-xs sm:text-sm md:text-base text-primary leading-snug drop-shadow-lg">
-                  {d.name}
-                </h3>
-                <p className="font-body text-foreground/80 text-sm md:text-base mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 leading-relaxed line-clamp-2">
-                  {d.desc}
-                </p>
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
+              {/* Glassmorphism label */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-background/30 backdrop-blur-xl border border-primary/15 rounded-lg p-4">
+                  <h3 className="font-heading text-xs sm:text-sm text-primary leading-snug mb-1">
+                    {d.name}
+                  </h3>
+                  <p className="font-body text-foreground/70 text-sm leading-relaxed">
+                    {d.desc}
+                  </p>
+                </div>
               </div>
-              {/* Gold border on hover */}
-              <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-primary/40 transition-colors duration-500" />
+            </div>
+          ))}
+        </div>
+
+        {/* 3-column grid for last 3 deities */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {deities.slice(4, 7).map((d, i) => (
+            <div
+              key={d.name}
+              className={`group relative rounded-2xl overflow-hidden h-[320px] sm:h-[380px] transition-all duration-700 ${
+                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+              }`}
+              style={{ transitionDelay: visible ? `${(i + 4) * 120}ms` : "0ms" }}
+            >
+              <img
+                src={d.image}
+                alt={d.name}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/20 to-transparent" />
+              {/* Glassmorphism label */}
+              <div className="absolute bottom-4 left-4 right-4">
+                <div className="bg-background/30 backdrop-blur-xl border border-primary/15 rounded-lg p-4">
+                  <h3 className="font-heading text-xs sm:text-sm text-primary leading-snug mb-1">
+                    {d.name}
+                  </h3>
+                  <p className="font-body text-foreground/70 text-sm leading-relaxed">
+                    {d.desc}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>
