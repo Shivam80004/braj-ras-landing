@@ -1,0 +1,121 @@
+[data-cascading-viewport] {
+  --gap: 0.5em;
+}
+
+[data-cascading-slide] {
+  --clip: 0;
+  --radius: 0.75em;
+}
+
+.cascading-slider {
+  width: 100%;
+  max-width: 90em;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.cascading-slider__collection {
+  width: 100%;
+}
+
+.cascading-slider__list {
+  width: 100%;
+  height: 35em;
+  position: relative;
+  overflow: hidden;
+}
+
+.cascading-slider__item {
+  color: #fff;
+  cursor: pointer;
+  will-change: transform, clip-path;
+  clip-path: inset(0px calc(var(--clip) * 1px) round var(--radius));
+  -webkit-user-select: none;
+  user-select: none;
+  height: 100%;
+  position: absolute;
+  inset: 0% auto auto 0%;
+}
+
+.cascading-slider__item[data-status="active"] {
+  cursor: default;
+}
+
+.cascading-slider__item-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.cascading-slider__item-bg {
+  z-index: 0;
+  position: absolute;
+  inset: 0%;
+}
+
+.cascading-slider__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+
+.cascading-slider__item-content {
+  z-index: 2;
+  background-image: linear-gradient(0deg, #0009, #0000);
+  padding: 2em 2em 3em 2.5em;
+  position: absolute;
+  inset: auto 0% 0%;
+}
+
+.cascading-slider__h {
+  opacity: 0;
+  letter-spacing: -.03em;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Haffer XH, Arial, sans-serif;
+  font-size: 2.75em;
+  font-weight: 400;
+  line-height: 1;
+  transition: all .3s cubic-bezier(.645, .045, .355, 1);
+  transform: translate(0, .25em);
+  transition-delay: 0ms;
+}
+
+[data-cascading-slide][data-status="active"] .cascading-slider__h {
+  transition-delay: 400ms;
+  opacity: 1;
+  transform: translate(0px, 0em);
+}
+
+.cascading-slider__nav {
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  position: relative;
+}
+
+.cascading-slider__button {
+  color: #323b32;
+  background-color: #d7ecd7;
+  border-radius: .25em;
+  justify-content: center;
+  align-items: center;
+  width: 3em;
+  height: 3em;
+  padding: .75em;
+  display: flex;
+}
+
+.cascading-slider__button-arrow.is--prev {
+  transform: rotate(-180deg);
+}
