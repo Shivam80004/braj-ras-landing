@@ -1,0 +1,142 @@
+.typo-scroll {
+    color: #2b2b2b;
+    background-color: #c9ccc5;
+    width: 100vw;
+    position: relative;
+    overflow: clip;
+}
+
+.typo-scroll__collection {
+    flex-flow: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.typo-scroll__list {
+    flex-flow: column;
+    width: 100%;
+    display: flex;
+}
+
+.typo-scroll__item {
+    width: 100%;
+}
+
+.typo-scroll__link {
+    color: inherit;
+    justify-content: center;
+    width: 100%;
+    text-decoration: none;
+    display: flex;
+}
+
+.typo-scroll__h {
+    text-align: center;
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 7.5vw;
+    line-height: .9;
+}
+
+[data-typo-scroll-item="active"] .typo-scroll__h {
+    z-index: 2;
+    color: #6B6B6B;
+    mix-blend-mode: difference;
+}
+
+.typo-scroll__media {
+    aspect-ratio: 3 / 4;
+    pointer-events: none;
+    width: 17.5vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    transform: translate(-50%, -50%);
+    --po: 1.5em;
+    /* Path offset */
+    transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    clip-path: polygon(calc(0% + var(--po)) calc(0% + var(--po)), calc(100% - var(--po)) calc(0% + var(--po)), calc(100% - var(--po)) calc(100% - var(--po)), calc(0% + var(--po)) calc(100% - var(--po)));
+    opacity: 0;
+}
+
+[data-typo-scroll-item="active"] .typo-scroll__media {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    opacity: 1;
+}
+
+@media (hover: none) and (pointer: coarse) {
+    [data-typo-scroll-item="active"] .typo-scroll__media {
+        pointer-events: all;
+    }
+}
+
+.typo-scroll__media.is--3-2 {
+    aspect-ratio: 3 / 2;
+    width: 25vw;
+}
+
+.typo-scroll__media.is--2-3 {
+    aspect-ratio: 2 / 3;
+    width: 16.5vw;
+}
+
+.typo-scroll__media.is--1-1 {
+    aspect-ratio: 1;
+    width: 20vw;
+}
+
+.typo-scroll__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.typo-scroll__img.is--bw {
+    filter: grayscale(1);
+}
+
+.typo-scroll__p {
+    -webkit-backdrop-filter: blur(1em);
+    backdrop-filter: blur(1em);
+    color: #f4f4f4;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #201d1d33;
+    margin-bottom: 0;
+    padding: .25em;
+    font-family: monospace;
+    font-size: .75em;
+    position: absolute;
+    bottom: 2em;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+@media screen and (max-width: 991px) {
+    .typo-scroll__h {
+        font-size: 11vw;
+    }
+
+    .typo-scroll__media {
+        width: 52.5vw;
+    }
+
+    .typo-scroll__media.is--3-2 {
+        width: 75vw;
+    }
+
+    .typo-scroll__media.is--2-3 {
+        width: 49.5vw;
+    }
+
+    .typo-scroll__media.is--1-1 {
+        width: 60vw;
+    }
+}
