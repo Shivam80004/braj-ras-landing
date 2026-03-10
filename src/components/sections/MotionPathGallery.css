@@ -1,0 +1,198 @@
+/* ── MotionPath Gallery ── */
+.motionpath-wrap {
+    width: 100%;
+    height: 600vh;
+    position: relative;
+    overflow: clip;
+}
+
+.motionpath-content {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: sticky;
+    top: 0;
+}
+
+.motionpath-content-inner {
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.motionpath-content-path {
+    width: 100vmax;
+    height: 100%;
+    max-height: 45vh;
+}
+
+.motionpath-svg {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.motionpath-content-wrap {
+    z-index: 1;
+    position: absolute;
+}
+
+.motionpath-content-item {
+    gap: 2em;
+    justify-content: flex-start;
+    align-items: flex-start;
+    display: flex;
+    position: absolute;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.motionpath-content-item__visual {
+    aspect-ratio: 4 / 5;
+    border-radius: 0.75em;
+    flex: none;
+    width: max(25vw, 15rem);
+    overflow: hidden;
+}
+
+.motionpath-content-item__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.motionpath-content-item__details {
+    gap: 0.75em;
+    white-space: normal;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-top: 2em;
+    display: flex;
+    width: max(20vw, 14rem);
+}
+
+.motionpath-content-item__title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 2em;
+    font-weight: 500;
+    line-height: 1;
+    color: #fff;
+}
+
+.motionpath-content-item__desc {
+    margin-top: 0;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 90%;
+}
+
+.motionpath-content-item__label {
+    color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 100em;
+    padding: 0.5em 0.75em;
+    font-size: 0.75em;
+    font-weight: 500;
+    line-height: 1.2;
+    backdrop-filter: blur(8px);
+}
+
+.motionpath-bg-text-container {
+    position: absolute;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Put it behind images */
+    z-index: 0; 
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+    transform: translateY(-15vh); /* Move the text a bit up */
+}
+
+.motionpath-bg-static {
+    font-size: 6vw;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0.9;
+    
+    /* Transparent Gold Detailing */
+    background: linear-gradient(135deg, hsl(43 80% 70% / 0.15), hsl(43 72% 52% / 0.15), hsl(43 65% 35% / 0.15));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.motionpath-bg-marquee {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+    margin-top: -2vw;
+    /* Extra transparent to let static text stand out more if wanted */
+    opacity: 0.5; 
+}
+
+.motionpath-bg-marquee-inner {
+    display: flex;
+    width: fit-content;
+    /* Animation removed to be controlled by GSAP scroll */
+}
+
+.motionpath-bg-marquee-inner span {
+    font-size: 16vw;
+    font-weight: 700;
+    line-height: 0.8;
+    padding-right: 0.5em; /* Increased spacing between repeated words */
+    white-space: nowrap;
+    
+    /* Transparent Gold Detailing */
+    background: linear-gradient(135deg, hsl(43 80% 70% / 0.1), hsl(43 72% 52% / 0.1), hsl(43 65% 35% / 0.1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+
+
+/* ── Mobile ── */
+@media screen and (max-width: 767px) {
+    .motionpath-content-inner {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .motionpath-content-path {
+        max-height: 70vh;
+    }
+
+    .motionpath-content-item {
+        gap: 1em;
+    }
+
+    .motionpath-content-item__details {
+        gap: 0.5em;
+        padding-top: 1em;
+    }
+
+    .motionpath-content-item__title {
+        font-size: 1.25em;
+    }
+
+    .motionpath-content-item__label {
+        font-size: 0.625em;
+    }
+}

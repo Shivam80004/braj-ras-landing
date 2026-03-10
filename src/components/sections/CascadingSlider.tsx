@@ -1,6 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import './CascadingSlider.css';
+import bankeBihari from "@/assets/banke-bihari.jpg";
+import radhaRaman from "@/assets/radha-raman.jpg";
+import radhaDamodar from "@/assets/radha-damodar.jpg";
+import radhaGokulananda from "@/assets/radha-gokulananda.jpg";
+import radhaShyamsundar from "@/assets/radha-shyamsundar.jpg";
+import madanMohan from "@/assets/madan-mohan.jpg";
+import radhaGopinath from "@/assets/radha-gopinath.jpg";
+import radhaGovindevji from "@/assets/radha-govindevji.jpg";
+
 
 const breakpoints = [
   { maxWidth: 479, activeWidth: 0.78, siblingWidth: 0.08 },
@@ -10,11 +19,13 @@ const breakpoints = [
 ];
 
 const initialSlides = [
-  { title: "Annual overview", img: "https://cdn.prod.website-files.com/699ecbb03f86e84bad7a74f3/699eea7d454cb9d5091ac8ce_cascading-carousel-3.avif" },
-  { title: "Sustainability efforts", img: "https://cdn.prod.website-files.com/699ecbb03f86e84bad7a74f3/699eec227ff9240c1e047cf3_cascading-carousel-2.avif" },
-  { title: "Product development", img: "https://cdn.prod.website-files.com/699ecbb03f86e84bad7a74f3/699eea7d6333786f72559958_cascading-carousel-5.avif" },
-  { title: "Infrastructure", img: "https://cdn.prod.website-files.com/699ecbb03f86e84bad7a74f3/699eea7d9bf91f87ca962997_cascading-carousel-1.avif" },
-  { title: "Enterprises", img: "https://cdn.prod.website-files.com/699ecbb03f86e84bad7a74f3/699eea7d882b31c7ce3a35be_cascading-carousel-4.avif" }
+  { title: "Radha Damodar Temple", image: radhaDamodar },
+  { title: "Radha Gokulananda Temple", image: radhaGokulananda },
+  { title: "Radha Gopinath Temple", image: radhaGopinath },
+  { title: "Radha Shyamsundar Temple", image: radhaShyamsundar },
+  { title: "Radha Raman Temple", image: radhaRaman },
+  { title: "Radha Govindevji Temple", image: radhaGovindevji },
+  { title: "Radha Madanmohan Temple", image: madanMohan }
 ];
 
 // Duplicate slides to meet the minimum requirement of 9 slides without DOM cloning by JS script
@@ -22,12 +33,24 @@ const slides = [...initialSlides, ...initialSlides];
 
 const CascadingSlider = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = React.useState(false);
 
   useEffect(() => {
     if (!wrapperRef.current) return;
     const wrapper = wrapperRef.current;
     
-    const duration = 0.65;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(wrapper);
+
+    const duration = 0.35;
     const ease = 'power3.inOut';
 
     const viewport = wrapper.querySelector('[data-cascading-viewport]');
@@ -241,19 +264,34 @@ const CascadingSlider = () => {
     };
   }, []);
 
-  return (
-    <section className="py-20 w-full overflow-hidden bg-background">
-      <div data-cascading-slider-wrap className="cascading-slider" aria-label="Featured content" aria-roledescription="carousel" ref={wrapperRef}>
+  return (  
+    <section id="deities" className="relative w-full overflow-hidden bg-background h-[100svh] flex flex-col justify-center">
+      <div className="text-center mb-8 md:mb-12">
+          <h2
+            className={`font-heading text-3xl sm:text-4xl md:text-5xl text-gold-gradient transition-all duration-1000 ${
+              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            7 Deities of Śrī Vrndāvana
+          </h2>
+          <p className="font-body text-xl text-foreground/50 mt-4 italic max-w-xl mx-auto">
+            Each temple holds a unique rasa — a distinct flavor of devotion that has drawn seekers for centuries.
+          </p>
+          <div className="ornament-divider max-w-xs mx-auto mt-6">
+            <span className="text-primary text-sm">✦</span>
+          </div>
+       </div>
+      <div data-cascading-slider-wrap className="cascading-slider h-[30em]" aria-label="Featured content" aria-roledescription="carousel" ref={wrapperRef}>
         <div className="cascading-slider__collection">
           <div data-cascading-viewport className="cascading-slider__list">
             {slides.map((slide, i) => (
               <div key={i} aria-roledescription="slide" data-cascading-slide role="group" className="cascading-slider__item">
                 <div className="cascading-slider__item-inner">
                   <div className="cascading-slider__item-bg">
-                    <img src={slide.img} loading={i === 0 ? "eager" : "lazy"} draggable="false" className="cascading-slider__img" alt={slide.title} />
+                    <img src={slide.image} loading={i === 0 ? "eager" : "lazy"} draggable="false" className="cascading-slider__img" alt={slide.title} />
                   </div>
-                  <div className="cascading-slider__item-content">
-                    <h3 className="cascading-slider__h">{slide.title}</h3>
+                  <div className="cascading-slider__item-content absolute bottom-0 left-0 right-0 p-8 pt-16 bg-gradient-to-t from-background/95 via-background/80 to-transparent">
+                    <h3 className="cascading-slider__h text-gold-gradient shimmer drop-shadow-md">{slide.title}</h3>
                   </div>
                 </div>
               </div>

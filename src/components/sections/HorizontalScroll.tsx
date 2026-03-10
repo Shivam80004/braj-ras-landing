@@ -2,14 +2,20 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './HorizontalScroll.css';
+import VCMTallestTemple from "@/assets/VCM-tallest-temple-4k.png"
+import SriSriRadhaVrindavanchandra from "@/assets/VCM-deities.jpg"
+import VCMfestivals from "@/assets/VCM-festival.heic"
+import Parks from "@/assets/VCM-parks.JPG"
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
 const panelsData = [
-    { title: "Dolomites", img: "https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf7185c9dcfbedc6d4aa_Dramatic%20Mountain%20Range%20at%20Sunrise.avif" },
-    { title: "Patagonia", img: "https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf71364a2fdf36e25d26_Tranquil%20Dawn%20over%20the%20Pastel%20Peak%20Range.avif" },
-    { title: "Yosemite Park", img: "https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf712f57198f963fd7eb_Majestic%20Mountain%20Landscape.avif" },
-    { title: "Pyrenees", img: "https://cdn.prod.website-files.com/68f8bc9dc83dc1aacaa172e7/68f8cf71cb5249dc6ea2eb35_Subdued%20Mountain%20Serenity.avif" }
+    { title: "World's Tallest Temple", img: VCMTallestTemple },
+    { title: "Sri Sri Radha Vrindavanchandra", img: SriSriRadhaVrindavanchandra },
+    { title: "Festivals", img: VCMfestivals },
+    { title: "Parks", img: Parks }
 ];
 
 const HorizontalScroll = () => {

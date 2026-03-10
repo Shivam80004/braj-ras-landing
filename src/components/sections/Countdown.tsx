@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './Countdown.css';
 
 interface CountdownState {
     days: number;
@@ -9,20 +8,6 @@ interface CountdownState {
     done: boolean;
     error: boolean;
 }
-
-const formatLabel = (key: string, value: number, format: string) => {
-    if (format === 'plain') return `${value}`;
-
-    const sing: Record<string, string> = { days: 'day', hours: 'hour', minutes: 'minute', seconds: 'second' };
-    const abbr: Record<string, string[]> = { days: ['day', 'days'], hours: ['hr.', 'hrs.'], minutes: ['min.', 'mins.'], seconds: ['sec.', 'secs.'] };
-
-    if (format === 'short') return value + (key === 'months' ? 'mo' : key[0]);
-    if (format === 'abbr') {
-        const a = abbr[key];
-        return value + ' ' + a[value === 1 ? 0 : 1];
-    }
-    return value + ' ' + (value === 1 ? sing[key] : key);
-};
 
 const parseIso = (dateStr: string, offsetHours: number) => {
     const m = dateStr.trim().match(/^(\d{4})-(\d{2})-(\d{2})\s(\d{1,2}):(\d{2})$/);
@@ -36,10 +21,11 @@ const parseIso = (dateStr: string, offsetHours: number) => {
     return t;
 };
 
+const padZero = (num: number) => num.toString().padStart(2, '0');
+
 const Countdown = () => {
     const targetDateStr = "2026-03-21 11:36";
     const offsetHours = 2; // e.g. CEST time relative to UTC
-    const format = "long"; // plain, short, long, abbr
 
     const [timeLeft, setTimeLeft] = useState<CountdownState>({
         days: 0, hours: 0, minutes: 0, seconds: 0, done: false, error: false
@@ -86,28 +72,66 @@ const Countdown = () => {
 
     if (timeLeft.error) {
         return (
-            <section className="countdown-section py-20">
-                <div data-countdown-status="error">
-                    <p>Invalid Date, use: YYYY-MM-DD HH:mm</p>
-                </div>
-            </section>
+            <div className="flex justify-center items-center py-4 w-full z-10 mb-8">
+                <p className="text-destructive font-body">Invalid Date config</p>
+            </div>
         );
     }
 
+    if (timeLeft.done) {
+        return null;
+    }
+
     return (
-        <section className="countdown-section py-20">
-            <div
-                data-countdown-timezone-offset={offsetHours}
-                data-countdown-date={targetDateStr}
-                data-countdown-status={timeLeft.done ? "finished" : "active"}
-                data-countdown-format={format}
-            >
-                <p data-countdown-update="days">{formatLabel('days', timeLeft.days, format)}</p>
-                <p data-countdown-update="hours">{formatLabel('hours', timeLeft.hours, format)}</p>
-                <p data-countdown-update="minutes">{formatLabel('minutes', timeLeft.minutes, format)}</p>
-                <p data-countdown-update="seconds">{formatLabel('seconds', timeLeft.seconds, format)}</p>
+        <div className="flex justify-center items-center w-full z-10 mb-4 sm:mb-8">
+            <div className="flex items-center justify-center gap-1.5 sm:gap-3 font-heading">
+                {/* Days */}
+                <div className="flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[4rem]">
+                    <span className="text-2xl sm:text-4xl font-bold shimmer text-gold-gradient drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">
+                        {padZero(timeLeft.days)}
+                    </span>
+                    <span className="text-[8px] sm:text-[10px] tracking-[0.15em] uppercase text-primary/80 sm:mt-0.5">
+                        Days
+                    </span>
+                </div>
+                
+                <div className="text-xl sm:text-3xl text-primary/40 -mt-3 sm:-mt-5 shimmer">:</div>
+                
+                {/* Hours */}
+                <div className="flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[4rem]">
+                    <span className="text-2xl sm:text-4xl font-bold shimmer text-gold-gradient drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">
+                        {padZero(timeLeft.hours)}
+                    </span>
+                    <span className="text-[8px] sm:text-[10px] tracking-[0.15em] uppercase text-primary/80 sm:mt-0.5">
+                        Hours
+                    </span>
+                </div>
+                
+                <div className="text-xl sm:text-3xl text-primary/40 -mt-3 sm:-mt-5 shimmer">:</div>
+                
+                {/* Minutes */}
+                <div className="flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[4rem]">
+                    <span className="text-2xl sm:text-4xl font-bold shimmer text-gold-gradient drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">
+                        {padZero(timeLeft.minutes)}
+                    </span>
+                    <span className="text-[8px] sm:text-[10px] tracking-[0.15em] uppercase text-primary/80 sm:mt-0.5">
+                        Mins
+                    </span>
+                </div>
+                
+                <div className="text-xl sm:text-3xl text-primary/40 -mt-3 sm:-mt-5 shimmer">:</div>
+                
+                {/* Seconds */}
+                <div className="flex flex-col items-center justify-center min-w-[3rem] sm:min-w-[4rem]">
+                    <span className="text-2xl sm:text-4xl font-bold shimmer text-gold-gradient drop-shadow-[0_0_10px_rgba(255,215,0,0.3)]">
+                        {padZero(timeLeft.seconds)}
+                    </span>
+                    <span className="text-[8px] sm:text-[10px] tracking-[0.15em] uppercase text-primary/80 sm:mt-0.5">
+                        Secs
+                    </span>
+                </div>
             </div>
-        </section>
+        </div>
     );
 };
 

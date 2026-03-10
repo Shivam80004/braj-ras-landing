@@ -1,5 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import Countdown from "./Countdown";
 
 export default function HeroSection() {
   return (
@@ -32,14 +33,15 @@ export default function HeroSection() {
         ))}
       </div>
 
-      <div className="relative z-10 text-center px-6">
-        <h1 className="font-heading text-5xl sm:text-7xl md:text-8xl lg:text-9xl shimmer text-gold-gradient leading-tight tracking-wide">
+      <div className="relative z-10 text-center px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
+        <Countdown />
+        <h1 className="font-heading text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[13rem] shimmer text-gold-gradient leading-none tracking-wider mb-2">
           BrajRas
         </h1>
-        <p className="font-heading text-xl sm:text-2xl md:text-3xl text-primary/80 mt-4 tracking-[0.3em]">
+        <p className="font-heading text-xl sm:text-2xl md:text-3xl text-primary/80 mt-4 tracking-[0.3em] uppercase">
           2026
         </p>
-        <div className="ornament-divider max-w-xs mx-auto my-8">
+        <div className="ornament-divider w-full max-w-xs mx-auto my-8">
           <span className="text-primary text-xl">✦</span>
         </div>
         <p className="font-body text-lg sm:text-xl md:text-2xl text-foreground/80 max-w-2xl mx-auto italic leading-relaxed">

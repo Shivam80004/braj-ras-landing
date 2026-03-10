@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const links = [
   { label: "Deities", href: "#deities" },
@@ -10,16 +10,42 @@ const links = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  
+  // Use a ref to track scroll position without triggering re-renders or effect re-runs
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const controlNavbar = () => {
+      if (typeof window !== "undefined") {
+        const currentScrollY = window.scrollY;
+        
+        // Handle navbar background transparency
+        setScrolled(currentScrollY > 60);
+
+        // Handle navbar visibility
+        if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+          // Scrolling down & past threshold
+          setIsVisible(false);
+        } else {
+          // Scrolling up or at top
+          setIsVisible(true);
+        }
+
+        // Remember current page location to use in the next move
+        lastScrollY.current = currentScrollY;
+      }
+    };
+
+    window.addEventListener("scroll", controlNavbar);
+    return () => window.removeEventListener("scroll", controlNavbar);
   }, []);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      } ${
         scrolled
           ? "bg-background/30 backdrop-blur-xl border-b border-primary/10 py-3"
           : "bg-transparent py-6"
