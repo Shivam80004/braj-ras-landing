@@ -1,10 +1,9 @@
 import { useEffect, useState, useRef } from "react";
 
 const links = [
-  { label: "Deities", href: "#deities" },
-  { label: "Vraj", href: "#corners" },
-  { label: "Līlā", href: "#lila" },
-  { label: "Experience", href: "#vcm" },
+  { label: "Journey", href: "#itinerary" },
+  { label: "Experiences", href: "#vcm" },
+  { label: "Testimonials", href: "#testimonials" },
   { label: "Register", href: "#register" },
 ];
 
@@ -52,7 +51,12 @@ export default function Navbar() {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <a href="#" className="font-heading text-lg text-primary tracking-wider">
+        <a href="#" className="font-heading text-2xl tracking-widest uppercase" style={{
+          background: 'linear-gradient(135deg, hsl(43 80% 70% / 0.5), hsl(43 72% 52% / 0.5), hsl(43 65% 35% / 0.5))',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}>
           BrajRas
         </a>
         <div className="hidden md:flex items-center gap-8">

@@ -3,9 +3,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useToast } from "@/hooks/use-toast";
+import { ArrowRight } from "lucide-react";
+import './RegisterSection.css';
 
 const schema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -33,114 +34,152 @@ export default function RegisterSection() {
   };
 
   return (
-    <section id="register" className="py-24 px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-royal/20 to-maroon-deep/30" />
+    <section id="register" className="min-h-screen relative bg-[#120E15] overflow-hidden flex items-center">
+      {/* Subtle glowing texture matching the theme */}
+      <div className="absolute inset-0 opacity-[0.03] bg-texture-move point-events-none" />
+      <div className="absolute top-0 right-0 w-[50vw] h-[50vh] bg-gradient-to-bl from-primary/10 to-transparent blur-[120px] pointer-events-none" />
 
-      <div ref={ref} className="container mx-auto max-w-xl relative z-10">
-        <div className="text-center mb-12">
-          <h2
-            className={`font-heading text-3xl sm:text-4xl md:text-5xl text-gold-gradient transition-all duration-1000 ${
-              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      <div ref={ref} className="container mx-auto px-6 lg:px-12 relative z-10 w-full max-w-[1600px] py-24">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+          
+          {/* ── LEFT SIDE: Dramatic Typography & Context ── */}
+          <div 
+            className={`flex flex-col space-y-8 transition-all duration-1000 ease-out ${
+              visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
             }`}
           >
-            Begin Your Journey
-          </h2>
-          <p className="font-body text-foreground/60 text-lg mt-4 italic">
-            Reserve your place in this sacred retreat
-          </p>
-          <div className="ornament-divider max-w-xs mx-auto mt-6">
-            <span className="text-primary text-sm">✦</span>
+            <div>
+              <p className="font-body text-primary/60 tracking-[0.3em] uppercase text-sm mb-6">
+                Gateway to the dhām
+              </p>
+              <h2 className="font-heading text-6xl sm:text-7xl lg:text-[7rem] leading-[0.85] text-gold-gradient">
+                Begin<br/>Your<br/>Journey
+              </h2>
+            </div>
+            
+            <div className="w-16 h-px bg-primary/30" />
+            
+            <div className="space-y-6 max-w-md">
+              <p className="font-body text-foreground/70 text-lg leading-relaxed font-light">
+                Spaces for the Braj Ras retreat are highly exclusive to ensure an intimate and profound experience for every seeker. 
+              </p>
+              <p className="font-body text-foreground/50 text-base leading-relaxed italic">
+                By submitting this registry, you express your earnest intent to immerse yourself deeply in the sacred mellows of Vrindavan. Our sevaks will review your application and reach out to guide you through the next steps.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div
-          className={`rounded-2xl p-8 md:p-10 bg-background/25 backdrop-blur-xl border border-primary/20 hover:border-primary/30 transition-all duration-1000 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          style={{ transitionDelay: "200ms" }}
-        >
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-body text-foreground/80 text-base tracking-wide">Full Name</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        className="bg-muted/50 border-border font-body text-lg"
-                        placeholder="Your name"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-body text-foreground/80 text-base tracking-wide">Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        type="email"
-                        className="bg-muted/50 border-border font-body text-lg"
-                        placeholder="your@email.com"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-body text-foreground/80 text-base tracking-wide">Phone</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        type="tel"
-                        className="bg-muted/50 border-border font-body text-lg"
-                        placeholder="+91 98765 43210"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="attendees"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-body text-foreground/80 text-base tracking-wide">Number of Attendees</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        type="number"
-                        min="1"
-                        max="20"
-                        className="bg-muted/50 border-border font-body text-lg"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button
-                type="submit"
-                className="w-full font-heading text-sm tracking-widest uppercase h-12 bg-primary text-primary-foreground hover:bg-gold-light transition-colors"
-              >
-                Register Now
-              </Button>
-            </form>
-          </Form>
+          {/* ── RIGHT SIDE: Minimalist Form ── */}
+          <div 
+            className={`transition-all duration-1200 ease-out delay-200 ${
+              visible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+            }`}
+          >
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12">
+                
+                {/* Custom Minimalist Inputs */}
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem className="relative group">
+                      <FormControl>
+                        <Input
+                          {...field}
+                          className="test-input"
+                          placeholder=" " // Required for the floating label trick
+                        />
+                      </FormControl>
+                      <FormLabel className="test-label">Full Name</FormLabel>
+                      <div className="test-input-line" />
+                      <FormMessage className="absolute -bottom-6 text-red-400" />
+                    </FormItem>
+                  )}
+                />
+
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem className="relative group">
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="email"
+                          className="test-input"
+                          placeholder=" "
+                        />
+                      </FormControl>
+                      <FormLabel className="test-label">Email Address</FormLabel>
+                      <div className="test-input-line" />
+                      <FormMessage className="absolute -bottom-6 text-red-400" />
+                    </FormItem>
+                  )}
+                />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem className="relative group">
+                        <FormControl>
+                          <Input
+                            {...field}
+                            type="tel"
+                            className="test-input"
+                            placeholder=" "
+                          />
+                        </FormControl>
+                        <FormLabel className="test-label">Phone</FormLabel>
+                        <div className="test-input-line" />
+                        <FormMessage className="absolute -bottom-6 text-red-400" />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="attendees"
+                    render={({ field }) => (
+                      <FormItem className="relative group">
+                        <FormControl>
+                          <Input
+                            {...field}
+                            type="number"
+                            min="1"
+                            max="20"
+                            className="test-input"
+                            placeholder=" "
+                          />
+                        </FormControl>
+                        <FormLabel className="test-label">Attendees</FormLabel>
+                        <div className="test-input-line" />
+                        <FormMessage className="absolute -bottom-6 text-red-400" />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+
+                <div className="pt-8">
+                  <button
+                    type="submit"
+                    className="group relative flex items-center justify-between w-full p-6 bg-transparent border border-primary/20 hover:border-primary/60 transition-colors duration-500 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-primary/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
+                    <span className="relative z-10 font-heading text-2xl tracking-wider text-primary group-hover:text-gold-light transition-colors duration-500">
+                      Submit Registry
+                    </span>
+                    <ArrowRight className="relative z-10 w-6 h-6 text-primary group-hover:translate-x-2 transition-transform duration-500" />
+                  </button>
+                </div>
+
+              </form>
+            </Form>
+          </div>
+
         </div>
       </div>
     </section>

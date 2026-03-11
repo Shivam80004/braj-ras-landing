@@ -1,0 +1,283 @@
+/* ==========================================================================
+   Golden Trail Itinerary Concept - Responsive Horizontal Scroll
+   ========================================================================== */
+
+   .iti-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(18, 14, 21);
+    color: #fff;
+    overflow: hidden; /* We handle the scroll via GSAP */
+  }
+  
+  /* ── 1. The Entry Hook ── */
+  .iti-hook {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    pointer-events: none; /* Let clicks pass through */
+    text-align: center;
+  }
+  
+  .iti-hook__text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-5vh);
+  }
+
+  .iti-hook__static {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6vw;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0.9;
+    
+    background: linear-gradient(135deg, hsl(43 80% 70% / 0.15), hsl(43 72% 52% / 0.15), hsl(43 65% 35% / 0.15));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .iti-hook__highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20vw;
+    font-weight: 700;
+    line-height: 0.8;
+    white-space: nowrap;
+    
+    margin-top: -2vw;
+    opacity: 0.5;
+    
+    /* Transparent Gold Detailing like VRINDAVAN */
+    background: linear-gradient(135deg, hsl(43 80% 70% / 0.1), hsl(43 72% 52% / 0.1), hsl(43 65% 35% / 0.1));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .iti-hook__scroll-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    color: hsl(43, 72%, 60%);
+  }
+  
+  .iti-hook__scroll-line {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, hsl(43, 72%, 60%) 0%, transparent 100%);
+  }
+  
+  /* ── 2. The Horizontal Track ── */
+  .iti-track {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    width: max-content; /* Critical: allows scenes to flow horizontally */
+  }
+  
+  /* ── 3. The SVG Golden Trail ── */
+  .iti-svg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Maps to the timeline scroll length approx */
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+  }
+  
+  .iti-svg {
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* The Invisible Guide Path */
+  .iti-svg-guide {
+    fill: none;
+    stroke: transparent;
+    stroke-width: 1px;
+  }
+  
+  /* The Glowing Hare Krishna text */
+  .iti-svg-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-style: normal; /* Normal as requested */
+    letter-spacing: 0.15em;
+    fill: hsla(43, 60%, 80%, 0.4); /* Reduced opacity for more subtle blending */
+    
+    /* Softened hardware acceleration & optimized glow effect for text */
+    filter: drop-shadow(0 0 5px hsla(43, 70%, 50%, 0.4)) drop-shadow(0 0 15px hsla(43, 60%, 40%, 0.2)); 
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  
+  /* ── 4. The Scenes (80% Structured, 20% Asymmetric) ── */
+  .iti-scene {
+    position: relative;
+    width: 100vw; /* Each scene takes up one full screen width */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+    z-index: 5;
+    overflow: hidden; /* Added to prevent bleed into adjacent horizontal scenes */
+  }
+  
+  /* The Massive Background Text */
+  .iti-scene__bg-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14vw; /* Reduced from 28vw to fit better within the screen */
+    font-weight: 700;
+    color: hsl(43, 72%, 60%);
+    opacity: 0.03;
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  /* 80% Structure - The Content Grid */
+  .iti-scene__content {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1400px;
+    z-index: 10;
+  }
+  
+  /* Text Column */
+  .iti-scene__text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .iti-scene__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    color: hsl(43, 72%, 60%);
+    border: 1px solid rgba(220, 165, 76, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    width: max-content;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  
+  .iti-scene__title {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  
+  .iti-scene__subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2rem;
+  }
+  
+  .iti-scene__desc {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    max-width: 400px;
+  }
+  
+  /* Image Column */
+  .iti-scene__img-col {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .iti-scene__main-img {
+    width: 80%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    z-index: 2;
+  }
+  
+  /* 20% Asymmetry - The floating sub-image */
+  .iti-scene__sub-img {
+    position: absolute;
+    width: 45%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.8);
+    z-index: 3;
+    /* This element gets the internal GSAP parallax on horizontal scroll */
+  }
+  
+  /* Variations for Asymmetry - Kept entirely within bounds to respect overflow: hidden */
+  .iti-scene--top .iti-scene__sub-img { top: 5%; right: 5%; }
+  .iti-scene--bottom .iti-scene__sub-img { bottom: 5%; left: 5%; }
+  .iti-scene--center .iti-scene__sub-img { top: 50%; right: 5%; transform: translateY(-50%); }
+  
+  /* Empty spacer to give the last scene room to scroll */
+  .iti-spacer {
+    width: 50vw;
+    height: 100vh;
+  }
+  
+  /* ── Responsive Mobile ── */
+  @media (max-width: 768px) {
+    .iti-hook__text { font-size: 2.5rem; padding: 0 1rem; }
+    .iti-scene { padding: 4rem 2rem; }
+    .iti-scene__content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .iti-scene__main-img { width: 100%; aspect-ratio: 1/1; }
+    .iti-scene--top .iti-scene__sub-img,
+    .iti-scene--bottom .iti-scene__sub-img,
+    .iti-scene--center .iti-scene__sub-img {
+      width: 50%;
+      right: 5%;
+      bottom: 5%;
+      top: auto;
+      left: auto;
+      transform: none;
+    }
+  }

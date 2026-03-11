@@ -3,124 +3,44 @@ import './TypoScroll.css';
 
 const itemsData = [
     {
-        title: "OSMO SUPPLY",
+        title: "Estatic Kirtans",
         img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
         aspectClass: ""
     },
     {
-        title: "Mara Lynt",
+        title: "Prasadam",
         img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
         aspectClass: "is--3-2"
     },
     {
-        title: "Kavirö",
+        title: "Enchanting treks",
         img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
         aspectClass: "is--2-3"
     },
     {
-        title: "Solara Works",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a8799fb46f896d7c81f9b_image%2030.avif",
+        title: "Holy dips",
+        img: "/gellery-img/gallery-img-4.png",
         aspectClass: "is--1-1"
     },
     {
-        title: "OSMO SUPPLY",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
-        aspectClass: ""
+        title: "Deep meditation",
+        img: "/gellery-img/gallery-img-5.png",
+        aspectClass: "is--1-1"
     },
     {
-        title: "Mara Lynt",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
+        title: "Felicitation ceremony",
+        img: "/src/assets/VCM-hall.JPG",
+        aspectClass: "is--1-1"
+    },
+    {
+        title: "Vedic Discourses",
+        img: "/src/assets/VCM-monk.JPG",
         aspectClass: "is--3-2"
     },
     {
-        title: "Kavirö",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
+        title: "Sacred Yamuna",
+        img: "/gellery-img/gallery-img-7.png",
         aspectClass: "is--2-3"
-    },
-    {
-        title: "Solara Works",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a8799fb46f896d7c81f9b_image%2030.avif",
-        aspectClass: "is--1-1"
-    },
-    {
-        title: "OSMO SUPPLY",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
-        aspectClass: ""
-    },
-    {
-        title: "Mara Lynt",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
-        aspectClass: "is--3-2"
-    },
-    {
-        title: "Kavirö",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
-        aspectClass: "is--2-3"
-    },
-    {
-        title: "Solara Works",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a8799fb46f896d7c81f9b_image%2030.avif",
-        aspectClass: "is--1-1"
-    },
-    {
-        title: "OSMO SUPPLY",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
-        aspectClass: ""
-    },
-    {
-        title: "Mara Lynt",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
-        aspectClass: "is--3-2"
-    },
-    {
-        title: "Kavirö",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
-        aspectClass: "is--2-3"
-    },
-    {
-        title: "Solara Works",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a8799fb46f896d7c81f9b_image%2030.avif",
-        aspectClass: "is--1-1"
-    },
-    {
-        title: "OSMO SUPPLY",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
-        aspectClass: ""
-    },
-    {
-        title: "Mara Lynt",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
-        aspectClass: "is--3-2"
-    },
-    {
-        title: "Kavirö",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
-        aspectClass: "is--2-3"
-    },
-    {
-        title: "Solara Works",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a8799fb46f896d7c81f9b_image%2030.avif",
-        aspectClass: "is--1-1"
-    },
-    {
-        title: "OSMO SUPPLY",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
-        aspectClass: ""
-    },
-    {
-        title: "Mara Lynt",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
-        aspectClass: "is--3-2"
-    },
-    {
-        title: "Kavirö",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
-        aspectClass: "is--2-3"
-    },
-    {
-        title: "Solara Works",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a8799fb46f896d7c81f9b_image%2030.avif",
-        aspectClass: "is--1-1"
     },
 ];
 
@@ -228,6 +148,16 @@ const TypoScroll = () => {
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* The concluding hook requested by the user */}
+            <div className="flex flex-col items-center justify-center pt-32 pb-16 text-center select-none">
+                <p className="font-body text-foreground/60 tracking-widest uppercase text-sm mb-6">
+                    And many, many more things await you...
+                </p>
+                <h2 className="font-heading text-6xl sm:text-7xl md:text-8xl text-gold-gradient">
+                    ready to experience<br/>Braj Ras?
+                </h2>
             </div>
         </section>
     );

@@ -17,22 +17,6 @@ export default function HeroSection() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,hsl(43_72%_52%/0.08)_0%,transparent_70%)]" />
       </div>
 
-      {/* Animated floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 rounded-full bg-primary/30"
-            style={{
-              left: `${15 + i * 15}%`,
-              top: `${20 + (i % 3) * 25}%`,
-              animation: `float-particle ${4 + i}s ease-in-out infinite alternate`,
-              animationDelay: `${i * 0.7}s`,
-            }}
-          />
-        ))}
-      </div>
-
       <div className="relative z-10 text-center px-6 w-full max-w-5xl mx-auto flex flex-col items-center">
         <Countdown />
         <h1 className="font-heading text-6xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[13rem] shimmer text-gold-gradient leading-none tracking-wider mb-2">

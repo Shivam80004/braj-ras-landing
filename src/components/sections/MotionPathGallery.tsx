@@ -50,7 +50,7 @@ const DEFAULT_ITEMS = [
         label: 'The Mysterious manifestation',
         title: 'Sri Radha Shyamsundar',
         slug: 'radha-shyamsundar',
-        description: 'Miraculously manifested from Radharani\'s own heart for Shyamananda Pandit. They represent the intimately sweet pastimes of the divine couple.'
+        description: 'Miraculously manifestation of the deity from Radharani\'s own heart for Shyamananda Pandit. They represent the intimately sweet pastimes of the divine couple.'
     },
     {
         image: raman,
@@ -76,7 +76,7 @@ function debounce(fn, delay = 200) {
     };
 }
 
-const MotionPathGallery = ({ items = DEFAULT_ITEMS, title = 'RETREATS' }) => {
+const MotionPathGallery = ({ items = DEFAULT_ITEMS}) => {
     const wrapRef = useRef(null);
     const tlRef = useRef(null);
     const marqueeRef = useRef(null);
@@ -123,7 +123,7 @@ const MotionPathGallery = ({ items = DEFAULT_ITEMS, title = 'RETREATS' }) => {
             motionPath: {
                 path,
                 align: path,
-                curviness: 2,
+                curviness: 10,
                 alignOrigin: [0.5, 0.5],
             },
         })

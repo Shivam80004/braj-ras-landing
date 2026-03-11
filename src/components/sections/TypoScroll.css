@@ -1,6 +1,6 @@
 .typo-scroll {
-    color: #2b2b2b;
-    background-color: #c9ccc5;
+    color: hsl(43, 60%, 85%);
+    background-color: rgb(18, 14, 21); /* Braj Ras dark mode */
     width: 100vw;
     position: relative;
     overflow: clip;
@@ -41,12 +41,15 @@
     margin-bottom: 0;
     font-size: 7.5vw;
     line-height: .9;
+    font-family: 'Cormorant Garamond', serif; /* Apply site typography */
+    color: rgba(255, 255, 255, 0.1); /* Ghost text when not hovered */
+    transition: color 0.3s ease;
 }
 
 [data-typo-scroll-item="active"] .typo-scroll__h {
     z-index: 2;
-    color: #6B6B6B;
-    mix-blend-mode: difference;
+    color: hsl(43, 72%, 60%); /* Gold when hovered/active */
+    mix-blend-mode: normal; /* Disabling difference for the dark theme */
 }
 
 .typo-scroll__media {
@@ -105,14 +108,15 @@
 .typo-scroll__p {
     -webkit-backdrop-filter: blur(1em);
     backdrop-filter: blur(1em);
-    color: #f4f4f4;
+    color: hsl(43, 60%, 85%);
     text-align: center;
     white-space: nowrap;
-    background-color: #201d1d33;
+    background-color: rgba(18, 14, 21, 0.4);
     margin-bottom: 0;
-    padding: .25em;
-    font-family: monospace;
-    font-size: .75em;
+    padding: .25em 1em;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 0.15em;
     position: absolute;
     bottom: 2em;
     left: 50%;

@@ -7,6 +7,7 @@
   display: flex;
 }
 
+/* ── Custom Dark Backgrounds ── */
 .stacking-cards__item {
   color: #fff;
   border-top-left-radius: 1em;
@@ -14,35 +15,40 @@
   width: 100%;
   min-height: 100vh;
   margin-top: -1em;
-  display: block; /* children are absolutely positioned within */
+  display: block;
   position: relative;
   overflow: hidden;
+  background-color: rgb(18, 14, 21); /* the user's requested rich dark background */
 }
 
-/* ── Background Image ── Scaled 125% tall so GSAP parallax yPercent:-15 never shows edges */
-.stacking-cards__item-bg {
+/* ── Massive Background Watermark Text ── */
+.stacking-cards__item-bgText {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 125%;
-  object-fit: cover;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: min(18vw, 400px);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: hsl(43, 72%, 60%); /* The light golden color */
+  opacity: 0.06; /* Faint serif watermark */
+  white-space: nowrap;
+  pointer-events: none;
   z-index: 0;
-  transform-origin: center top;
+  letter-spacing: 0.05em;
 }
 
-/* ── Dark vignette overlay for text legibility ── */
-.stacking-cards__item-overlay {
+/* ── Portrait Images ── Sizes/Coordinates are injected via React inline style */
+.stacking-cards__item-portrait {
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 80%, rgba(0,0,0,0.65) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 20%, rgba(0,0,0,0.55) 0%, transparent 55%),
-    linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.5) 100%);
-  z-index: 1;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  z-index: 5;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
-/* ── Heading ── Absolutely positioned; coordinates set per-card in PERKS_DATA */
+/* ── Heading ── Absolutely positioned; coordinates set per-card */
 .stacking-cards__item-h {
   position: absolute;
   z-index: 10;
@@ -50,37 +56,37 @@
   text-transform: uppercase;
   font-family: 'Cinzel Decorative', cursive;
   font-weight: 400;          /* Light weight — no bold */
-  font-size: clamp(3.5rem, 9vw, 10rem);
+  font-size: clamp(2.5rem, 6vw, 6rem); /* Scaled down slightly from the massive version */
   line-height: 0.9;
   letter-spacing: 0.02em;
-  text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+  text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
-/* Small gold uppercase label above the big title */
+/* Small gold uppercase label above the heading */
 .stacking-card__heading-faded {
   display: block;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.5em;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
-  font-size: 0.18em;          /* Tiny relative to the big heading */
+  font-size: 0.25em;          /* Relative to the new heading size */
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: hsl(43, 72%, 60%);  /* BrajRas gold */
   opacity: 0.9;
 }
 
-/* ── Description ── Absolutely positioned; coordinates set per-card in PERKS_DATA */
+/* ── Description ── Absolutely positioned; coordinates set per-card */
 .stacking-cards__item-desc {
   position: absolute;
   z-index: 10;
   margin: 0;
-  max-width: 240px;            /* Short tight column — does not obstruct photo */
+  max-width: 250px;            /* Short tight column */
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 0.95rem;          /* Small, unobtrusive */
+  font-size: 1.05rem;          /* Clean and readable */
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.9);
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
 }
 
 /* ── Top navigation bar ── */
@@ -106,13 +112,51 @@
 
 /* ── Mobile ── */
 @media screen and (max-width: 768px) {
+  /* On mobile, override inline absolute positioning and stack things cleanly */
+  .stacking-cards__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 6rem 1.5rem 2rem 1.5rem;
+  }
+  
+  .stacking-cards__item-portrait {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: auto !important;     /* let the inline width apply */
+    max-width: 85vw;            /* but cap it */
+    margin: 1rem 0;
+  }
+
   .stacking-cards__item-h {
-    font-size: clamp(2.5rem, 15vw, 5rem);
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 3rem;
   }
+
   .stacking-cards__item-desc {
-    max-width: 190px;
-    font-size: 0.85rem;
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    text-align: center;
+    max-width: 90%;
   }
+
+  .stacking-cards__item-bgText {
+    font-size: 28vw;
+  }
+
   .stacking-cards__item-top {
     top: 1.5em;
     left: 1.5em;

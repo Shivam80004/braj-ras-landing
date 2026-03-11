@@ -7,60 +7,119 @@ gsap.registerPlugin(ScrollTrigger);
 
 const PERKS_DATA = [
   {
-    themeClass: 'is--green',
-    label: 'Collection of Premium Living Spaces',
-    title: 'Residences',
-    description: 'VCM provides a rare opportunity to reside inside a magnificent temple complex — fusing world-class hospitality with spiritual tranquility.',
-    image: '/gellery-img/gallery-img-1.jpg',
+    themeClass: 'is--dark-green',
+    label: 'World-Class Accommodation',
+    title: 'The Stay',
+    description: 'VCM provides a rare opportunity to reside inside a magnificent temple complex — fusing premium hospitality with spiritual tranquility.',
+    bgText: 'RESIDENCES',
     number: '01 / 05',
-    // ── CARD 1 POSITIONS ─────────────────────────────────────────────────────
-    // Change these to reposition the title and description on this card.
-    titlePos:  { bottom: '12%', right: '6%' },   // Title: bottom-right corner
-    descPos:   { bottom: '8%',  left:  '5%' },   // Description: bottom-left corner
+    titlePos:  { top: '35%', right: '15%' },
+    descPos:   { bottom: '20%', left: '15%' },
+    images: [
+      {
+        src: '/src/assets/VCM-tallest-temple.jpg',
+        style: { width: '25vw', top: '15%', left: '10%' },
+        parallaxSpeed: -15
+      },
+      {
+        src: '/gellery-img/gallery-img-1.jpg',
+        style: { width: '18vw', bottom: '10%', right: '25%' },
+        parallaxSpeed: -30
+      }
+    ]
   },
   {
-    themeClass: 'is--purple',
-    label: 'Lightness of Breathing',
-    title: 'Nature',
-    description: 'Sacred forests and pristine Kundas surround the temple — offering a meditative backdrop unlike anything else in the world.',
-    image: '/gellery-img/gallery-img-2.webp',
-    number: '02 / 05',
-    // ── CARD 2 POSITIONS ─────────────────────────────────────────────────────
-    titlePos:  { top: '30%',  left: '5%' },      // Title: mid-left
-    descPos:   { bottom: '9%', right: '5%' },    // Description: bottom-right
-  },
-  {
-    themeClass: 'is--blue',
+    themeClass: 'is--dark-purple',
     label: 'Essence of Contemplation',
     title: 'Temple Hall',
     description: 'Thousands gather in a climate-controlled, acoustically perfect grand sanctuary. Pure devotion resonates in every corner.',
-    image: '/gellery-img/gallery-img-3.jpg',
-    number: '03 / 05',
-    // ── CARD 3 POSITIONS ─────────────────────────────────────────────────────
-    titlePos:  { bottom: '10%', right: '6%' },   // Title: bottom-right corner
-    descPos:   { top: '12%',    left: '5%' },    // Description: top-left corner
+    bgText: 'SANCTUARY',
+    number: '02 / 05',
+    titlePos:  { top: '20%', left: '10%' },
+    descPos:   { bottom: '15%', right: '15%' },
+    images: [
+      {
+        src: '/gellery-img/gallery-img-3.jpg',
+        style: { width: '28vw', top: '25%', right: '10%' },
+        parallaxSpeed: -20
+      },
+      {
+        src: '/src/assets/VCM-deities.jpg',
+        style: { width: '20vw', bottom: '10%', left: '20%' },
+        parallaxSpeed: -40
+      }
+    ]
   },
   {
-    themeClass: 'is--brown',
+    themeClass: 'is--dark-blue',
+    label: 'Lightness of Breathing',
+    title: 'Parks & Kundas',
+    description: 'Sacred forests and pristine Kundas surround the temple — offering a meditative backdrop unlike anything else in the world.',
+    bgText: 'NATURE',
+    number: '03 / 05',
+    titlePos:  { bottom: '30%', left: '15%' },
+    descPos:   { bottom: '25%', right: '15%' },
+    images: [
+      {
+        src: '/src/assets/VCM-parks.JPG',
+        style: { width: '30vw', top: '10%', left: '50%', transform: 'translateX(-50%)' },
+        parallaxSpeed: -10
+      },
+      {
+        src: '/gellery-img/gallery-img-2.webp',
+        style: { width: '15vw', top: '30%', right: '10%' },
+        parallaxSpeed: -50
+      }
+    ]
+  },
+  {
+    themeClass: 'is--dark-brown',
     label: 'Recharging Consciousness',
     title: 'Festivals',
     description: 'Immersive festivities, spectacular kirtans, and ecstatic congregational chanting keep the soul invigorated throughout the retreat.',
-    image: '/gellery-img/gallery-img-4.jpeg',
+    bgText: 'CELEBRATE',
     number: '04 / 05',
-    // ── CARD 4 POSITIONS ─────────────────────────────────────────────────────
-    titlePos:  { top: '20%', left: '5%' },       // Title: upper-left area
-    descPos:   { bottom: '8%', right: '5%' },    // Description: bottom-right
+    titlePos:  { top: '15%', right: '15%' },
+    descPos:   { top: '35%', right: '15%' },
+    images: [
+      {
+        src: '/src/assets/VCM-festival.heic',
+        style: { width: '26vw', bottom: '10%', left: '15%' },
+        parallaxSpeed: -25
+      },
+      {
+        src: '/gellery-img/gallery-img-4.jpeg',
+        style: { width: '22vw', bottom: '5%', right: '35%' },
+        parallaxSpeed: -15
+      }
+    ]
   },
   {
-    themeClass: 'is--red',
-    label: 'Divine Nourishment',
-    title: 'Darshan',
-    description: 'Behold the magnificent altar. Savor Mahaprasadam — prepared with devotion and unmatched purity — that nourishes the soul.',
-    image: '/gellery-img/gallery-img-5.png',
+    themeClass: 'is--dark-red',
+    label: 'Adventure & Exploration',
+    title: 'Treks & Boat Rides',
+    description: 'Explore the hidden gems of Braj. Traverse ancient trekking trails and experience serene boat rides along the sacred Yamuna.',
+    bgText: 'EXPLORE',
     number: '05 / 05',
-    // ── CARD 5 POSITIONS ─────────────────────────────────────────────────────
-    titlePos:  { bottom: '12%', right: '6%' },   // Title: bottom-right
-    descPos:   { bottom: '9%',  left: '5%' },    // Description: bottom-left
+    titlePos:  { top: '30%', left: '10%' },
+    descPos:   { bottom: '20%', left: '10%' },
+    images: [
+      {
+        src: '/src/assets/VCM-trek.JPG',
+        style: { width: '28vw', top: '20%', right: '15%' },
+        parallaxSpeed: -20
+      },
+      {
+        src: '/gellery-img/gallery-img-5.png',
+        style: { width: '18vw', bottom: '15%', right: '45%' },
+        parallaxSpeed: -45
+      },
+      {
+        src: '/gellery-img/gallery-img-6.png',
+        style: { width: '15vw', top: '15%', right: '45%' },
+        parallaxSpeed: -10
+      }
+    ]
   },
 ];
 
@@ -73,33 +132,42 @@ export default function CascadingPerks() {
       if (cards.length < 2) return;
 
       cards.forEach((card, i) => {
-        // Skip over the first section
-        if (i === 0) return;
+        // Skip over the first section's cascade trigger
+        if (i !== 0) {
+          const previousCard = cards[i - 1];
+          if (previousCard) {
+            gsap.fromTo(previousCard, 
+              { yPercent: 0 }, 
+              { 
+                yPercent: 50,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top bottom",
+                  end: "top top",
+                  scrub: true,
+                  invalidateOnRefresh: true
+                }
+              }
+            );
+          }
+        }
+      });
 
-        // When current section is in view, target the PREVIOUS one
-        const previousCard = cards[i - 1];
-        if (!previousCard) return;
-
-        // Find any element inside the previous card
-        const previousCardImage = previousCard.querySelector('[data-stacking-cards-img]');
-        if (!previousCardImage) return;
-
-        let tl = gsap.timeline({
-          defaults: {
-            ease: "none",
-            duration: 1
-          },
+      // ── Generic Parallax for ALL images (including last card) ──
+      const parallaxImages = gsap.utils.toArray<HTMLElement>('[data-parallax-img]');
+      parallaxImages.forEach((img) => {
+        const speed = img.getAttribute('data-speed') || "-15";
+        gsap.to(img, {
+          yPercent: Number(speed),
+          ease: "none",
           scrollTrigger: {
-            trigger: card,
+            trigger: img.closest('[data-stacking-cards-item]'), // Parallax over the course of its parent card
             start: "top bottom",
-            end: "top top",
-            scrub: true,
-            invalidateOnRefresh: true
+            end: "bottom top",
+            scrub: true
           }
         });
-
-        tl.fromTo(previousCard, { yPercent: 0 }, { yPercent: 50 })
-          .fromTo(previousCardImage, { yPercent: 0 }, { yPercent: -15 }, "<");
       });
     }, containerRef); // Scope to container to avoid conflicting with other sections
 
@@ -116,22 +184,31 @@ export default function CascadingPerks() {
               data-stacking-cards-item="true"
               className={`stacking-cards__item ${item.themeClass}`}
             >
-              {/* Background Image & Overlay */}
-              <img
-                src={item.image}
-                data-stacking-cards-img="true"
-                alt={item.title}
-                className="stacking-cards__item-bg"
-              />
-              <div className="stacking-cards__item-overlay" />
+              {/* ── MASSIVE BACKGROUND WATERMARK ── */}
+              <div className="stacking-cards__item-bgText">
+                {item.bgText}
+              </div>
 
-              {/* ── TITLE ── absolute position controlled per-card via titlePos in PERKS_DATA above */}
+              {/* ── PORTRAIT IMAGES ── */}
+              {item.images.map((img, imgIndex) => (
+                <img
+                  key={imgIndex}
+                  src={img.src}
+                  alt={`${item.title} image ${imgIndex + 1}`}
+                  className="stacking-cards__item-portrait"
+                  style={img.style}
+                  data-parallax-img="true"
+                  data-speed={img.parallaxSpeed}
+                />
+              ))}
+
+              {/* ── TITLE ── absolute position controlled per-card */}
               <h3 className="stacking-cards__item-h" style={item.titlePos}>
                 <span className="stacking-card__heading-faded">{item.label}</span>
                 {item.title}
               </h3>
 
-              {/* ── DESCRIPTION ── absolute position controlled per-card via descPos in PERKS_DATA above */}
+              {/* ── DESCRIPTION ── absolute position controlled per-card */}
               <p className="stacking-cards__item-desc" style={item.descPos}>
                 {item.description}
               </p>

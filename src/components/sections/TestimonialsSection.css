@@ -1,0 +1,189 @@
+/* 
+  TestimonialsSection.css
+  Theme deeply bound to the main site dark mode
+  rgb(18, 14, 21) -> hsl(274, 20%, 7%)
+*/
+
+.test-section {
+  position: relative;
+  width: 100%;
+  background-color: rgb(18, 14, 21);
+  overflow: visible; /* Allows the sticky text to stay visible across 300vh */
+}
+
+/* ── Sticky Massive Background Text ── */
+.test-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.test-bg-text {
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 16vw;
+  font-weight: 700;
+  color: hsl(43, 72%, 60%);
+  opacity: 0.03;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+  margin: 0;
+}
+
+/* ── The Scrolling Content Blocks ── */
+.test-content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.test-block {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+.test-block__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  max-width: 1400px;
+  width: 100%;
+  align-items: center;
+}
+
+/* ── Quote Content (Left side) ── */
+.test-quote-wrapper {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.test-quote-mark {
+  position: absolute;
+  top: -4rem;
+  left: -2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 8rem;
+  line-height: 1;
+  color: hsla(43, 60%, 50%, 0.15);
+  pointer-events: none;
+}
+
+.test-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3.5rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* ── Card Content (Right side) ── */
+.test-card-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.test-card {
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(274, 20%, 12%); /* Slightly lighter than the 18,14,21 bg to differentiate the card */
+  border-radius: 16px; /* Added rounded corners as requested */
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.test-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Image Top Half */
+.test-card__img-container {
+  position: relative;
+  width: 100%;
+  flex: 7.5; /* Increased to 75% of the card to make bottom smaller */
+  overflow: hidden;
+}
+
+.test-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.test-card__img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(18, 14, 21, 0) 0%, rgba(18, 14, 21, 0.4) 100%);
+  pointer-events: none;
+}
+
+/* Card Block Bottom Half */
+.test-card__bottom {
+  flex: 2.5; /* 25% of the card; decreased size as requested */
+  position: relative;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.test-card__name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem; /* Decreased font size */
+  line-height: 0.8;
+  color: hsl(43, 60%, 85%);
+  margin: 0;
+  font-weight: 400;
+}
+
+.test-card__affiliation {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+  text-align: right; /* Aligned to the bottom right like the "16 MINUTES TO MIBC" */
+  text-transform: uppercase;
+}
+
+/* ── Responsive Mobile ── */
+@media (max-width: 992px) {
+  .test-block__inner {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .test-quote-wrapper {
+    order: 2;
+  }
+  
+  .test-card-wrapper {
+    order: 1;
+  }
+  
+  .test-quote-mark {
+    font-size: 6rem;
+    top: -3rem;
+    left: -1rem;
+  }
+  
+  .test-bg-text {
+    font-size: 20vw;
+  }
+}
