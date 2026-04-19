@@ -94,14 +94,10 @@ export default function FooterSection() {
             <p className="font-body text-muted-foreground text-sm uppercase tracking-widest mb-4 md:mb-0">
               © 2026 Braj Ras. All rights reserved.
             </p>
-            <div className="flex gap-6">
-               <a href="#" className="font-body text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-widest">Privacy Policy</a>
-               <a href="#" className="font-body text-muted-foreground hover:text-primary transition-colors text-sm uppercase tracking-widest">Terms of Service</a>
-            </div>
           </div>
         </div>
 
-        {/* 4. Massive Typography (OSMO Style) */}
+        {/* 4. Massive Typography */}
         <div className="footer-huge-text-wrapper relative z-0">
           <h1 className="footer-huge-text">Braj Ras</h1>
         </div>

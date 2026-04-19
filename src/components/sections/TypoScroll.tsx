@@ -4,42 +4,37 @@ import './TypoScroll.css';
 const itemsData = [
     {
         title: "Estatic Kirtans",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879acaa2379a19c9dbc1_image%2026.avif",
+        img: "src/assets/typoScroll/kirtan.JPG",
         aspectClass: ""
     },
     {
         title: "Prasadam",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a40b0a52832601f51_image%2017.avif",
+        img: "src/assets/typoScroll/prasadam.JPG",
         aspectClass: "is--3-2"
     },
     {
         title: "Enchanting treks",
-        img: "https://cdn.prod.website-files.com/693a7f8f14a0becb25db9e8f/693a879a6755543b199a941a_image%2021.avif",
+        img: "src/assets/typoScroll/trek.JPG",
         aspectClass: "is--2-3"
     },
     {
         title: "Holy dips",
-        img: "/gellery-img/gallery-img-4.png",
-        aspectClass: "is--1-1"
-    },
-    {
-        title: "Deep meditation",
-        img: "/gellery-img/gallery-img-5.png",
+        img: "src/assets/typoScroll/dip.JPG",
         aspectClass: "is--1-1"
     },
     {
         title: "Felicitation ceremony",
-        img: "/src/assets/VCM-hall.JPG",
+        img: "src/assets/typoScroll/felicitation.JPG",
         aspectClass: "is--1-1"
     },
     {
         title: "Vedic Discourses",
-        img: "/src/assets/VCM-monk.JPG",
+        img: "src/assets/typoScroll/discourses.JPG",
         aspectClass: "is--3-2"
     },
     {
         title: "Sacred Yamuna",
-        img: "/gellery-img/gallery-img-7.png",
+        img: "src/assets/typoScroll/yamuna.jpeg",
         aspectClass: "is--2-3"
     },
 ];
@@ -142,7 +137,6 @@ const TypoScroll = () => {
                                 </h3>
                                 <div className={`typo-scroll__media ${item.aspectClass}`}>
                                     <img src={item.img} loading="lazy" alt={item.title} className="typo-scroll__img" />
-                                    <p className="typo-scroll__p">[ OPEN CASE ]</p>
                                 </div>
                             </a>
                         </div>

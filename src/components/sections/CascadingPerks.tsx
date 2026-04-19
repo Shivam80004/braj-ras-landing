@@ -3,6 +3,12 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './CascadingPerks.css';
 
+import templeImg from '@/assets/VCM-tallest-temple.jpg';
+import deitiesImg from '@/assets/VCM-deities.jpg';
+import parksImg from '@/assets/VCM-parks.JPG';
+import festivalImg from '@/assets/VCM-festival.jpg';
+import trekImg from '@/assets/VCM-trek.JPG';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const PERKS_DATA = [
@@ -13,18 +19,18 @@ const PERKS_DATA = [
     description: 'VCM provides a rare opportunity to reside inside a magnificent temple complex — fusing premium hospitality with spiritual tranquility.',
     bgText: 'RESIDENCES',
     number: '01 / 05',
-    titlePos:  { top: '35%', right: '15%' },
-    descPos:   { bottom: '20%', left: '15%' },
+    titlePos:  { top: '12%', right: '8%' },
+    descPos:   { bottom: '7%', left: '60%' },
     images: [
       {
-        src: '/src/assets/VCM-tallest-temple.jpg',
-        style: { width: '25vw', top: '15%', left: '10%' },
+        src: templeImg,
+        style: { width: '26vw', top: '35%', left: '8%' },
         parallaxSpeed: -15
       },
       {
-        src: '/gellery-img/gallery-img-1.jpg',
-        style: { width: '18vw', bottom: '10%', right: '25%' },
-        parallaxSpeed: -30
+        src: 'src/assets/hotel.jpg',
+        style: { width: '12vw', bottom: '7%', right: '45%' },
+        parallaxSpeed: -25
       }
     ]
   },
@@ -32,20 +38,20 @@ const PERKS_DATA = [
     themeClass: 'is--dark-purple',
     label: 'Essence of Contemplation',
     title: 'Temple Hall',
-    description: 'Thousands gather in a climate-controlled, acoustically perfect grand sanctuary. Pure devotion resonates in every corner.',
+    description: 'Hundreds gather in a acoustically perfect grand temple hall. Holy Name of the Lord resonates in every corner.',
     bgText: 'SANCTUARY',
     number: '02 / 05',
-    titlePos:  { top: '20%', left: '10%' },
-    descPos:   { bottom: '15%', right: '15%' },
+    titlePos:  { top: '12%', left: '8%' },
+    descPos:   { bottom: '10%', right: '30%' },
     images: [
       {
-        src: '/gellery-img/gallery-img-3.jpg',
-        style: { width: '28vw', top: '25%', right: '10%' },
+        src: 'src/assets/mth.JPG',
+        style: { width: '15vw', top: '60%', right: '8%' },
         parallaxSpeed: -20
       },
       {
-        src: '/src/assets/VCM-deities.jpg',
-        style: { width: '20vw', bottom: '10%', left: '20%' },
+        src: deitiesImg,
+        style: { width: '20vw', bottom: '15%', left: '12%' },
         parallaxSpeed: -40
       }
     ]
@@ -54,20 +60,20 @@ const PERKS_DATA = [
     themeClass: 'is--dark-blue',
     label: 'Lightness of Breathing',
     title: 'Parks & Kundas',
-    description: 'Sacred forests and pristine Kundas surround the temple — offering a meditative backdrop unlike anything else in the world.',
+    description: 'Parks and Kundas surround the temple that offers a serene meditative backdrop.',
     bgText: 'NATURE',
     number: '03 / 05',
-    titlePos:  { bottom: '30%', left: '15%' },
-    descPos:   { bottom: '25%', right: '15%' },
+    titlePos:  { top: '12%', left: '8%' },
+    descPos:   { bottom: '10%', right: '25%' },
     images: [
       {
-        src: '/src/assets/VCM-parks.JPG',
-        style: { width: '30vw', top: '10%', left: '50%', transform: 'translateX(-50%)' },
+        src: parksImg,
+        style: { width: '24vw', bottom: '10%', left: '25%' },
         parallaxSpeed: -10
       },
       {
-        src: '/gellery-img/gallery-img-2.webp',
-        style: { width: '15vw', top: '30%', right: '10%' },
+        src: 'src/assets/parks.JPG',
+        style: { width: '22vw', top: '38%', right: '10%' },
         parallaxSpeed: -50
       }
     ]
@@ -79,17 +85,17 @@ const PERKS_DATA = [
     description: 'Immersive festivities, spectacular kirtans, and ecstatic congregational chanting keep the soul invigorated throughout the retreat.',
     bgText: 'CELEBRATE',
     number: '04 / 05',
-    titlePos:  { top: '15%', right: '15%' },
-    descPos:   { top: '35%', right: '15%' },
+    titlePos:  { top: '12%', right: '8%' },
+    descPos:   { top: '80%', left: '15%' },
     images: [
       {
-        src: '/src/assets/VCM-festival.heic',
-        style: { width: '26vw', bottom: '10%', left: '15%' },
+        src: festivalImg,
+        style: { width: '26vw', bottom: '15%', right: '15%' },
         parallaxSpeed: -25
       },
       {
-        src: '/gellery-img/gallery-img-4.jpeg',
-        style: { width: '22vw', bottom: '5%', right: '35%' },
+        src: 'src/assets/festivals1.jpg',
+        style: { width: '30vw', top: '22%', left: '15%' },
         parallaxSpeed: -15
       }
     ]
@@ -101,23 +107,18 @@ const PERKS_DATA = [
     description: 'Explore the hidden gems of Braj. Traverse ancient trekking trails and experience serene boat rides along the sacred Yamuna.',
     bgText: 'EXPLORE',
     number: '05 / 05',
-    titlePos:  { top: '30%', left: '10%' },
-    descPos:   { bottom: '20%', left: '10%' },
+    titlePos:  { top: '12%', left: '8%' },
+    descPos:   { bottom: '10%', left: '8%' },
     images: [
       {
-        src: '/src/assets/VCM-trek.JPG',
-        style: { width: '28vw', top: '20%', right: '15%' },
+        src: trekImg,
+        style: { width: '26vw', top: '35%', right: '18%' },
         parallaxSpeed: -20
       },
       {
-        src: '/gellery-img/gallery-img-5.png',
-        style: { width: '18vw', bottom: '15%', right: '45%' },
+        src: 'src/assets/boatRide.JPG',
+        style: { width: '20vw', bottom: '20%', left: '12%' },
         parallaxSpeed: -45
-      },
-      {
-        src: '/gellery-img/gallery-img-6.png',
-        style: { width: '15vw', top: '15%', right: '45%' },
-        parallaxSpeed: -10
       }
     ]
   },
@@ -175,7 +176,7 @@ export default function CascadingPerks() {
   }, []);
 
   return (
-    <section className="bg-background relative z-10" ref={containerRef}>
+    <section id="vcm" className="bg-background relative z-10" ref={containerRef}>
       <div className="stacking-cards__collection">
         <div className="stacking-cards__list">
           {PERKS_DATA.map((item, index) => (

@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/hero-bg.png";
 import Countdown from "./Countdown";
 
 export default function HeroSection() {

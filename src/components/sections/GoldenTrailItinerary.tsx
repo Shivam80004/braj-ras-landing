@@ -5,6 +5,11 @@ import { Leaf } from 'lucide-react';
 import './GoldenTrailItinerary.css';
 import { ChevronDown } from "lucide-react";
 
+import kamyavanImg from '@/assets/IMG 9212.JPG';
+import govardhanImg from '@/assets/govardhan.jpg';
+import radhaKundImg from '@/assets/radhakund.jpg';
+import extraImg from '@/assets/IMG 9278 from Google Drive.JPG';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const ITINERARY_DATA = [
@@ -13,8 +18,7 @@ const ITINERARY_DATA = [
     title: 'KAMYAVAN',
     subtitle: 'The Forest of Fulfilled Desires',
     description: 'Venture into the oldest of Braj’s forests. Here, amidst ancient Kundas and hidden caves, Balaram and Krishna enacted their most enchanting childhood pastimes, far from the eyes of the world.',
-    mainImg: '/gellery-img/gallery-img-2.webp',
-    subImg: '/src/assets/VCM-parks.JPG',
+    mainImg: kamyavanImg,
     align: 'top',
   },
   {
@@ -22,8 +26,7 @@ const ITINERARY_DATA = [
     title: 'GOVARDHAN',
     subtitle: 'The Sacred Mountain',
     description: 'Circumambulate the very hill lifted by the Supreme Lord. Every stone and parikrama path holds the resonance of eternal devotion and miraculous protection.',
-    mainImg: '/src/assets/VCM-deities.jpg',
-    subImg: '/src/assets/VCM-festival.heic',
+    mainImg: govardhanImg,
     align: 'bottom',
   },
   {
@@ -31,35 +34,28 @@ const ITINERARY_DATA = [
     title: 'RADHA KUND',
     subtitle: 'The Highest Realization',
     description: 'Bathe your consciousness in the most exalted of all sacred waters. Shyam Kund and Radha Kund represent the zenith of esoteric love and spiritual attainment.',
-    mainImg: '/gellery-img/gallery-img-5.png',
-    subImg: '/src/assets/VCM-trek.JPG',
+    mainImg: radhaKundImg,
     align: 'center',
+  },
+  {
+    id: 'nandgaon',
+    title: 'NANDGAON & BARSANA',
+    subtitle: 'The Divine Childhood Villages',
+    description: 'Experience the charming landscapes where Radha and Krishna’s earliest leelas unfolded. Every street and temple here vibrates with sweet, eternal devotion.',
+    mainImg: extraImg,
+    align: 'top',
   }
 ];
 
 const GoldenTrailItinerary = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
-  const textPathRef = useRef<SVGTextPathElement>(null);
-  const clipRectRef = useRef<SVGRectElement>(null);
   const scenesRef = useRef<(HTMLDivElement | null)[]>([]);
-
+  
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      if (!containerRef.current || !trackRef.current || !textPathRef.current || !clipRectRef.current) return;
+      if (!containerRef.current || !trackRef.current) return;
 
-      const textPath = textPathRef.current;
-      const clipRect = clipRectRef.current;
-      
-      // Initialize the clip rectangle to width 0 (hiding the text)
-      gsap.set(clipRect, {
-        attr: { width: 0 }
-      });
-
-      // Start text at the very beginning of the string
-      gsap.set(textPath, {
-        attr: { startOffset: '0%' }
-      });
 
     // ── 2. Horizontal Scroll Timeline ──
     // Calculate the total scrollable distance based on track width minus viewport width
@@ -94,39 +90,8 @@ const GoldenTrailItinerary = () => {
       duration: 0.85
     }, 0.15); // Start after fade
 
-    // Reveal text by sweeping the clip-path rect across the canvas
-    tl.to(clipRect, {
-      attr: { width: 4500 }, // Full viewBox width
-      ease: 'none',
-      duration: 0.85
-    }, 0.15);
 
-    // Concurrently slowly drift the text forward within the revealed area
-    tl.to(textPath, {
-      attr: { startOffset: '8%' }, // Slow forward drift
-      ease: 'none',
-      duration: 0.85
-    }, 0.15);
-
-    // ── 3. 20% Asymmetric Parallax within Scenes ──
-    // Add subtle independent parallax to images as they scroll horizontally
-    scenesRef.current.forEach((scene) => {
-      if (!scene) return;
-      const subImg = scene.querySelector('.iti-scene__sub-img');
-      if (subImg) {
-        gsap.to(subImg, {
-          x: 100, // Move slightly right creating depth against the leftward horizontal scroll
-          ease: 'none',
-          scrollTrigger: {
-            trigger: scene,
-            containerAnimation: tl, // Hook into the horizontal timeline!
-            start: 'left right',
-            end: 'right left',
-            scrub: true,
-          }
-        });
-      }
-    });
+    // Removed Asymmetric parallax to fix stacking overlap issues
 
       return () => {
         ScrollTrigger.getAll().forEach(t => {
@@ -141,7 +106,7 @@ const GoldenTrailItinerary = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="iti-section">
+    <section id="itinerary" ref={containerRef} className="iti-section">
       
       {/* ── The Cinematic Hook ── */}
       <div className="iti-hook">
@@ -166,34 +131,6 @@ const GoldenTrailItinerary = () => {
         {/* Intro spacer so the hook is alone on screen initially */}
         <div className="iti-scene iti-intro-spacer" style={{ width: '100vw', height: '100vh', pointerEvents: 'none' }}></div>
 
-        {/* The Golden Trail SVG Text Path */}
-        <div className="iti-svg-container">
-          <svg preserveAspectRatio="none" viewBox="0 0 4500 800" className="iti-svg">
-            <defs>
-              <clipPath id="text-reveal-clip">
-                {/* Rect starts near the 100vw scroll mark so it emerges as soon as we pan */}
-                <rect ref={clipRectRef} x="500" y="0" width="0" height="800" />
-              </clipPath>
-            </defs>
-            {/* The Invisible Guide Path */}
-            <path 
-              id="the-trail"
-              className="iti-svg-guide"
-              /* We start it right at the edge of the first scene so it emerges immediately as it pans */
-              d="M 600,400 C 1200,400 1600,200 2400,200 C 3000,200 3200,600 3800,600 C 4200,600 4400,400 4600,400" 
-            />
-            {/* The Text flowing along the Guide, revealed by the sweep */}
-            <text className="iti-svg-text" clipPath="url(#text-reveal-clip)">
-              <textPath 
-                href="#the-trail" 
-                ref={textPathRef}
-              >
-                {/* The JS timeline will slowly drift startOffset here */}
-                {"Hare Krishna Hare Krishna Krishna Krishna Hare Hare   Hare Rama Hare Rama Rama Rama Hare Hare  ".repeat(20)}
-              </textPath>
-            </text>
-          </svg>
-        </div>
 
         {/* The Locations */}
         {ITINERARY_DATA.map((loc, index) => (
@@ -220,8 +157,6 @@ const GoldenTrailItinerary = () => {
 
               <div className="iti-scene__img-col">
                 <img src={loc.mainImg} alt={loc.title} className="iti-scene__main-img" />
-                {/* 20% Asymmetry - The floating parallax sub-image */}
-                <img src={loc.subImg} alt={`${loc.title} detail`} className="iti-scene__sub-img" />
               </div>
 
             </div>

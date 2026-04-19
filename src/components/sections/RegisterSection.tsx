@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -25,12 +26,60 @@ export default function RegisterSection() {
     defaultValues: { name: "", email: "", phone: "", attendees: "1" },
   });
 
-  const onSubmit = (data: FormValues) => {
-    toast({
-      title: "Registration received!",
-      description: `Thank you ${data.name}, we'll be in touch soon.`,
-    });
-    form.reset();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
+    
+    // Pull the deployed Web App URL from environment variables
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+    
+    if (!scriptUrl) {
+      toast({
+        title: "Configuration Missing",
+        description: "Google Sheets URL not added to environment variables.",
+        variant: "destructive"
+      });
+      console.warn("MISSING VITE_GOOGLE_SHEETS_URL. Form data:", data);
+      setIsSubmitting(false);
+      return;
+    }
+
+    try {
+      // Use URLSearchParams (x-www-form-urlencoded) to ensure clean POSTing to Google Apps Script
+      const formData = new URLSearchParams();
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('phone', data.phone);
+      formData.append('attendees', data.attendees.toString());
+
+      // Use mode: 'no-cors' to bypass strict browser CORS preflight checks entirely
+      await fetch(scriptUrl, {
+        method: 'POST',
+        mode: 'no-cors', 
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData,
+      });
+
+      // With no-cors, fetch resolves unconditionally if there is no hard network failure
+      toast({
+        title: "Registration received!",
+        description: `Thank you ${data.name}, we'll be in touch soon.`,
+      });
+      form.reset();
+      
+    } catch (error) {
+      toast({
+        title: "Submission failed",
+        description: "There was a network error sending your registration. Please try again.",
+        variant: "destructive"
+      });
+      console.error("Google Sheets Error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -65,7 +114,7 @@ export default function RegisterSection() {
                 Spaces for the Braj Ras retreat are highly exclusive to ensure an intimate and profound experience for every seeker. 
               </p>
               <p className="font-body text-foreground/50 text-base leading-relaxed italic">
-                By submitting this registry, you express your earnest intent to immerse yourself deeply in the sacred mellows of Vrindavan. Our sevaks will review your application and reach out to guide you through the next steps.
+                By submitting this registry, you express your intent to immerse yourself deeply in the sacred mellows of Vrindavan. Our volunteers will review your application and reach out to guide you through the next steps as soon as possible! meanwhile keep chanting Hare Krishna Mahamantra!!
               </p>
             </div>
           </div>
@@ -166,11 +215,12 @@ export default function RegisterSection() {
                 <div className="pt-8">
                   <button
                     type="submit"
-                    className="group relative flex items-center justify-between w-full p-6 bg-transparent border border-primary/20 hover:border-primary/60 transition-colors duration-500 overflow-hidden"
+                    disabled={isSubmitting}
+                    className={`group relative flex items-center justify-between w-full p-6 bg-transparent border border-primary/20 hover:border-primary/60 transition-colors duration-500 overflow-hidden ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     <div className="absolute inset-0 bg-primary/5 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out" />
                     <span className="relative z-10 font-heading text-2xl tracking-wider text-primary group-hover:text-gold-light transition-colors duration-500">
-                      Submit Registry
+                      {isSubmitting ? "Sending..." : "Submit Registry"}
                     </span>
                     <ArrowRight className="relative z-10 w-6 h-6 text-primary group-hover:translate-x-2 transition-transform duration-500" />
                   </button>

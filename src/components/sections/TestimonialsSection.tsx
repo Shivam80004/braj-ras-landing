@@ -8,21 +8,21 @@ gsap.registerPlugin(ScrollTrigger);
 const testimonials = [
   { 
     quote: "Braj Ras transformed my understanding of devotion. Every moment felt like a divine embrace.", 
-    name: "Ananya", 
-    affiliation: "MUMBAI",
-    img: "/gellery-img/gallery-img-1.png"
+    name: "Manoj", 
+    affiliation: "Jaipur",
+    img: "src/assets/manoj.JPG"
   },
   { 
     quote: "Walking through the forests of Kāmyavan, I felt the presence of Krishna. Words cannot describe it.", 
-    name: "Raghav", 
-    affiliation: "DELHI",
-    img: "/gellery-img/gallery-img-2.png"
+    name: "Dev", 
+    affiliation: "Varanasi",
+    img: "src/assets/dev.jpg"
   },
   { 
     quote: "The kīrtans, the prasādam, the sacred darśan — everything was beyond this world. I will return.", 
-    name: "Meera", 
-    affiliation: "BENGALURU",
-    img: "/gellery-img/gallery-img-3.png"
+    name: "Partha", 
+    affiliation: "Mumbai",
+    img: "src/assets/parth.jpeg"
   }
 ];
 
@@ -77,7 +77,7 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section ref={containerRef} className="test-section">
+    <section id="testimonials" ref={containerRef} className="test-section">
       {/* Massive Background Sticky Text */}
       <div className="test-bg-container">
         <h2 className="test-bg-text">EXPERIENCES</h2>
