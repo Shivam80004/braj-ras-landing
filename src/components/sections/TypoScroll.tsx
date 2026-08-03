@@ -1,40 +1,48 @@
 import React, { useEffect, useRef } from 'react';
 import './TypoScroll.css';
 
+import kirtanImg from '@/assets/typoScroll/kirtan.JPG';
+import prasadamImg from '@/assets/typoScroll/prasadam.JPG';
+import trekImg from '@/assets/typoScroll/trek.JPG';
+import dipImg from '@/assets/typoScroll/dip.JPG';
+import felicitationImg from '@/assets/typoScroll/felicitation.JPG';
+import discoursesImg from '@/assets/typoScroll/discourses.JPG';
+import yamunaImg from '@/assets/typoScroll/yamuna.jpeg';
+
 const itemsData = [
     {
         title: "Estatic Kirtans",
-        img: "src/assets/typoScroll/kirtan.JPG",
+        img: kirtanImg,
         aspectClass: ""
     },
     {
         title: "Prasadam",
-        img: "src/assets/typoScroll/prasadam.JPG",
+        img: prasadamImg,
         aspectClass: "is--3-2"
     },
     {
         title: "Enchanting treks",
-        img: "src/assets/typoScroll/trek.JPG",
+        img: trekImg,
         aspectClass: "is--2-3"
     },
     {
         title: "Holy dips",
-        img: "src/assets/typoScroll/dip.JPG",
+        img: dipImg,
         aspectClass: "is--1-1"
     },
     {
         title: "Felicitation ceremony",
-        img: "src/assets/typoScroll/felicitation.JPG",
+        img: felicitationImg,
         aspectClass: "is--1-1"
     },
     {
         title: "Vedic Discourses",
-        img: "src/assets/typoScroll/discourses.JPG",
+        img: discoursesImg,
         aspectClass: "is--3-2"
     },
     {
         title: "Sacred Yamuna",
-        img: "src/assets/typoScroll/yamuna.jpeg",
+        img: yamunaImg,
         aspectClass: "is--2-3"
     },
 ];

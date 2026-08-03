@@ -3,6 +3,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './TestimonialsSection.css';
 
+import manojImg from '@/assets/manoj.JPG';
+import devImg from '@/assets/dev.jpg';
+import parthImg from '@/assets/parth.jpeg';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
@@ -10,19 +14,19 @@ const testimonials = [
     quote: "Braj Ras transformed my understanding of devotion. Every moment felt like a divine embrace.", 
     name: "Manoj", 
     affiliation: "Jaipur",
-    img: "src/assets/manoj.JPG"
+    img: manojImg
   },
   { 
     quote: "Walking through the forests of Kāmyavan, I felt the presence of Krishna. Words cannot describe it.", 
     name: "Dev", 
     affiliation: "Varanasi",
-    img: "src/assets/dev.jpg"
+    img: devImg
   },
   { 
     quote: "The kīrtans, the prasādam, the sacred darśan — everything was beyond this world. I will return.", 
     name: "Partha", 
     affiliation: "Mumbai",
-    img: "src/assets/parth.jpeg"
+    img: parthImg
   }
 ];
 

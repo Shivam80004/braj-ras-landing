@@ -8,6 +8,11 @@ import deitiesImg from '@/assets/VCM-deities.jpg';
 import parksImg from '@/assets/VCM-parks.JPG';
 import festivalImg from '@/assets/VCM-festival.jpg';
 import trekImg from '@/assets/VCM-trek.JPG';
+import hotelImg from '@/assets/hotel.jpg';
+import mthImg from '@/assets/mth.JPG';
+import parksAltImg from '@/assets/parks.JPG';
+import festivals1Img from '@/assets/festivals1.jpg';
+import boatRideImg from '@/assets/boatRide.JPG';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,7 +33,7 @@ const PERKS_DATA = [
         parallaxSpeed: -16
       },
       {
-        src: 'src/assets/hotel.jpg',
+        src: hotelImg,
         style: { width: '12vw', bottom: '7%', right: '45%' },
         parallaxSpeed: -25
       }
@@ -45,7 +50,7 @@ const PERKS_DATA = [
     descPos: { bottom: '10%', right: '30%' },
     images: [
       {
-        src: 'src/assets/mth.JPG',
+        src: mthImg,
         style: { width: '15vw', top: '60%', right: '8%' },
         parallaxSpeed: -20
       },
@@ -72,7 +77,7 @@ const PERKS_DATA = [
         parallaxSpeed: -10
       },
       {
-        src: 'src/assets/parks.JPG',
+        src: parksAltImg,
         style: { width: '22vw', top: '38%', right: '10%' },
         parallaxSpeed: -50
       }
@@ -94,7 +99,7 @@ const PERKS_DATA = [
         parallaxSpeed: -25
       },
       {
-        src: 'src/assets/festivals1.jpg',
+        src: festivals1Img,
         style: { width: '30vw', top: '22%', left: '15%' },
         parallaxSpeed: -15
       }
@@ -116,7 +121,7 @@ const PERKS_DATA = [
         parallaxSpeed: -20
       },
       {
-        src: 'src/assets/boatRide.JPG',
+        src: boatRideImg,
         style: { width: '20vw', bottom: '20%', left: '12%' },
         parallaxSpeed: -45
       }
