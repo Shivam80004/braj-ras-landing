@@ -19,13 +19,13 @@ const PERKS_DATA = [
     description: 'VCM provides a rare opportunity to reside inside a magnificent temple complex — fusing premium hospitality with spiritual tranquility.',
     bgText: 'RESIDENCES',
     number: '01 / 05',
-    titlePos:  { top: '12%', right: '8%' },
-    descPos:   { bottom: '7%', left: '60%' },
+    titlePos: { top: '12%', right: '8%' },
+    descPos: { bottom: '7%', left: '60%' },
     images: [
       {
         src: templeImg,
         style: { width: '26vw', top: '35%', left: '8%' },
-        parallaxSpeed: -15
+        parallaxSpeed: -16
       },
       {
         src: 'src/assets/hotel.jpg',
@@ -41,8 +41,8 @@ const PERKS_DATA = [
     description: 'Hundreds gather in a acoustically perfect grand temple hall. Holy Name of the Lord resonates in every corner.',
     bgText: 'SANCTUARY',
     number: '02 / 05',
-    titlePos:  { top: '12%', left: '8%' },
-    descPos:   { bottom: '10%', right: '30%' },
+    titlePos: { top: '12%', left: '8%' },
+    descPos: { bottom: '10%', right: '30%' },
     images: [
       {
         src: 'src/assets/mth.JPG',
@@ -63,8 +63,8 @@ const PERKS_DATA = [
     description: 'Parks and Kundas surround the temple that offers a serene meditative backdrop.',
     bgText: 'NATURE',
     number: '03 / 05',
-    titlePos:  { top: '12%', left: '8%' },
-    descPos:   { bottom: '10%', right: '25%' },
+    titlePos: { top: '12%', left: '8%' },
+    descPos: { bottom: '10%', right: '25%' },
     images: [
       {
         src: parksImg,
@@ -85,8 +85,8 @@ const PERKS_DATA = [
     description: 'Immersive festivities, spectacular kirtans, and ecstatic congregational chanting keep the soul invigorated throughout the retreat.',
     bgText: 'CELEBRATE',
     number: '04 / 05',
-    titlePos:  { top: '12%', right: '8%' },
-    descPos:   { top: '80%', left: '15%' },
+    titlePos: { top: '12%', right: '8%' },
+    descPos: { top: '80%', left: '15%' },
     images: [
       {
         src: festivalImg,
@@ -107,8 +107,8 @@ const PERKS_DATA = [
     description: 'Explore the hidden gems of Braj. Traverse ancient trekking trails and experience serene boat rides along the sacred Yamuna.',
     bgText: 'EXPLORE',
     number: '05 / 05',
-    titlePos:  { top: '12%', left: '8%' },
-    descPos:   { bottom: '10%', left: '8%' },
+    titlePos: { top: '12%', left: '8%' },
+    descPos: { bottom: '10%', left: '8%' },
     images: [
       {
         src: trekImg,
@@ -137,9 +137,9 @@ export default function CascadingPerks() {
         if (i !== 0) {
           const previousCard = cards[i - 1];
           if (previousCard) {
-            gsap.fromTo(previousCard, 
-              { yPercent: 0 }, 
-              { 
+            gsap.fromTo(previousCard,
+              { yPercent: 0 },
+              {
                 yPercent: 50,
                 ease: "none",
                 scrollTrigger: {
