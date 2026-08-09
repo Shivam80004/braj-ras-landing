@@ -23,18 +23,18 @@ export default function FooterSection() {
           scrub: true
         }
       });
-    
+
       tl.from(footerInnerRef.current, {
         yPercent: -20,
         ease: 'none'
       });
-    
+
       tl.from(footerDarkRef.current, {
         opacity: 0.6,
         ease: 'none'
       }, '<');
     }, footerWrapRef);
-    
+
     return () => ctx.revert();
   }, []);
 
@@ -43,7 +43,7 @@ export default function FooterSection() {
       <footer ref={footerInnerRef} className="relative bg-[#120E15] pt-24 overflow-hidden flex flex-col min-h-[110vh]">
         {/* Background Texture matching the site theme */}
         <div className="absolute inset-0 opacity-[0.02] bg-texture-move pointer-events-none" />
-        
+
         <div className="relative flex-grow flex flex-col justify-center">
           {/* 1. The Masonry Grid Background */}
           <div className="absolute inset-0 z-0 pointer-events-none opacity-30 flex justify-center items-center overflow-hidden">
@@ -53,7 +53,7 @@ export default function FooterSection() {
           {/* 2. The Sitemap & Details */}
           <div className="container mx-auto px-6 relative z-10 max-w-7xl py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-12 pt-8">
-              
+
               {/* Brand/Logo Column */}
               <div className="col-span-1 md:col-span-2 flex flex-col items-center md:items-start space-y-6">
                 <h3 className="font-heading text-4xl sm:text-5xl text-primary mb-2">Braj Ras</h3>
@@ -61,7 +61,7 @@ export default function FooterSection() {
                   The culmination of the soul’s journey in Śrī Vṛndāvan Dhām.
                 </p>
               </div>
-              
+
               {/* Sitemap Column */}
               <div className="flex flex-col items-center md:items-start space-y-4 font-bold drop-shadow-md">
                 <h4 className="font-heading text-xl text-primary uppercase tracking-widest mb-4">Sitemap</h4>
@@ -83,7 +83,7 @@ export default function FooterSection() {
                   contact@ancientai.in
                 </a>
               </div>
-              
+
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function FooterSection() {
         <div className="footer-huge-text-wrapper relative z-0">
           <h1 className="footer-huge-text">Braj Ras</h1>
         </div>
-        
+
       </footer>
       <div ref={footerDarkRef} className="footer-wrap__dark"></div>
     </div>

@@ -38,7 +38,7 @@ export default function MasonryGallery() {
       const cs = getComputedStyle(container);
       cols = parseInt(cs.getPropertyValue('--masonry-col')) || 4;
       const rawGap = cs.getPropertyValue('--masonry-gap').trim() || '16px';
-      
+
       if (rawGap.endsWith('px')) {
         gapPx = parseFloat(rawGap);
       } else if (rawGap.endsWith('em')) {
@@ -56,7 +56,7 @@ export default function MasonryGallery() {
       colHeights = Array(cols).fill(0);
       container.style.position = 'relative';
       const items = Array.from(container.children) as HTMLElement[];
-      
+
       items.forEach(el => {
         el.style.position = 'absolute';
         el.style.width = `calc(${wCalc})`;
@@ -67,7 +67,7 @@ export default function MasonryGallery() {
         const idx = shuffle
           ? colHeights.indexOf(Math.min(...colHeights))
           : (i % cols);
-        el.style.top  = `${colHeights[idx]}px`;
+        el.style.top = `${colHeights[idx]}px`;
         el.style.left = `calc(${wCalc} * ${idx} + var(--masonry-gap) * ${idx})`;
         colHeights[idx] += h + gapPx;
       });

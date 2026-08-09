@@ -1,0 +1,109 @@
+.video-scale {
+    position: relative;
+    overflow-x: clip;
+}
+
+/* ---- Waypoint 1: the small, static-looking video card ---- */
+.video-scale__intro {
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    min-height: 100vh;
+    padding: 18vh 1.5rem 12vh;
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.video-scale__small-box {
+    width: min(22rem, 72vw);
+    position: relative;
+}
+
+/* ---- Waypoint 2: the full-width target the card grows into ---- */
+.video-scale__outro {
+    flex-flow: column;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 1.5rem 18vh;
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.video-scale__big-box {
+    width: 100%;
+    max-width: 88rem;
+    position: relative;
+}
+
+/* Aspect-ratio spacer: reserves 16:9 height so the boxes have layout size
+   even though the video card itself is absolutely positioned. */
+.video-scale__ratio {
+    padding-top: 56.25%;
+}
+
+/* A waypoint is just an empty rect. Flip measures these to build the tween. */
+.video-scale__wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    inset: 0;
+}
+
+/* The single element that actually travels between the waypoints. */
+.video-scale__card {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    isolation: isolate;
+    will-change: transform, width, height;
+    border: 1px solid hsl(var(--primary) / 0.2);
+    border-radius: 1rem;
+    background-color: hsl(var(--background) / 0.3);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.5);
+    transform: translateX(0) rotate(0.001deg);
+}
+
+.video-scale__video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: inherit;
+}
+
+.video-scale__caption {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.125rem;
+    color: hsl(var(--muted-foreground));
+}
+
+/* ---- Static fallback ----
+   Below the desktop breakpoint (and for reduced-motion users) the Flip
+   timeline is never built, so collapse to a single full-width video and
+   drop the second waypoint entirely. Keep this query the exact inverse of
+   the one in VideoSection.tsx or the outro leaves an empty gap. */
+@media screen and (max-width: 767px), (prefers-reduced-motion: reduce) {
+    .video-scale__intro {
+        gap: 1.5rem;
+        min-height: auto;
+        padding: 6rem 1.5rem;
+    }
+
+    .video-scale__small-box {
+        width: 100%;
+        max-width: 56rem;
+    }
+
+    .video-scale__outro {
+        display: none;
+    }
+}
