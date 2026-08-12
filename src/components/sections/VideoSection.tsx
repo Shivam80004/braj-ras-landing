@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Flip } from "gsap/all";
 import heroBg from "@/assets/hero-bg.jpg";
-import vrindavanVideo from "@/assets/Vrindavan Folk Trip 2022.mp4";
+import vrindavanVideo from "@/assets/Vrindavan Folk Trip 2022.webm";
 import "./VideoSection.css";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
